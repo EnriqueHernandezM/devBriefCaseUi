@@ -1,0 +1,139 @@
+.containerCardOneProject {
+  color: $fontColorSecondary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  padding: 1.25rem;
+  background-color: $colorTertiary;
+  border-radius: 20px;
+  @include tabletHorixzontalAndDesk {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .carouselImgs {
+    position: relative;
+    width: 99%;
+    height: 30vh;
+    @include mobileHorizontalAndTabletVertical {
+      width: 99%;
+      height: 47vh;
+    }
+    @include tabletHorixzontalAndDesk {
+      width: 49%;
+      height: 80vh;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      @include mobileHorizontalAndTabletVertical {
+        width: 100%;
+      }
+      @include tabletHorixzontalAndDesk {
+        width: 100%;
+      }
+    }
+    .img1 {
+      position: absolute;
+
+      @include mobileHorizontalAndTabletVertical {
+      }
+      @include tabletHorixzontalAndDesk {
+      }
+    }
+    .img2 {
+      @extend .img1;
+    }
+    .img3 {
+      @extend .img1;
+    }
+    .img4 {
+      @extend .img1;
+    }
+    .buttonsCarousel {
+      position: absolute;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: space-between;
+      align-items: center;
+      .chevronLeft {
+        img {
+          width: 2rem;
+          height: 4rem;
+          margin: 1rem;
+          @include mobileHorizontalAndTabletVertical {
+            width: 4rem;
+            height: 8rem;
+          }
+          @include tabletHorixzontalAndDesk {
+            width: 5rem;
+            height: 10rem;
+          }
+        }
+      }
+      .chevronRight {
+        img {
+          width: 2rem;
+          height: 4rem;
+          margin: 1rem;
+          @include mobileHorizontalAndTabletVertical {
+            width: 4rem;
+            height: 8rem;
+          }
+          @include tabletHorixzontalAndDesk {
+            width: 5rem;
+            height: 10rem;
+          }
+        }
+      }
+    }
+  }
+
+  .textsCard {
+    margin-top: 1rem;
+    padding: 1.75rem 0rem 0rem 0rem;
+    @include mobileHorizontalAndTabletVertical {
+      margin-top: 1.5rem;
+      padding: 3rem 0rem 0rem 0rem;
+    }
+    @include tabletHorixzontalAndDesk {
+      width: 49%;
+      margin-top: 0rem;
+      padding: 0.25rem 0rem 0rem 0rem;
+    }
+    h1 {
+      padding: 0.25rem 0rem 0rem 0rem;
+      @include mobileHorizontalAndTabletVertical {
+        padding: 0.25rem 0rem 0rem 0rem;
+      }
+      @include tabletHorixzontalAndDesk {
+        padding: 0.25rem 0rem 0rem 0rem;
+      }
+    }
+    p {
+      font-size: $fontSizeMobile;
+      @include mobileHorizontalAndTabletVertical {
+        font-size: $fontSizeTablet;
+      }
+      @include tabletHorixzontalAndDesk {
+        font-size: $fontSizeDesktop;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: $fontColorDetails;
+    }
+    span {
+      padding: 0.4rem;
+      @include mobileHorizontalAndTabletVertical {
+      }
+    }
+    span::before {
+      content: "#";
+    }
+  }
+}

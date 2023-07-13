@@ -1,0 +1,125 @@
+.containerAdminPanel {
+  color: $fontColorPrimary;
+  padding: 1rem;
+  font-size: $fontSizeMobile;
+  @include mobileHorizontalAndTabletVertical {
+    font-size: $fontSizeTablet;
+  }
+  @include tabletHorixzontalAndDesk {
+    font-size: $fontSizeDesktop;
+  }
+}
+.containerFormPostNewProject {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0rem 2rem 0rem;
+  margin: 0.75rem 0.15rem 1rem 0.15rem;
+  border-radius: 10px;
+  box-shadow: 0rem 0.15rem 1.15rem 0.35rem $colorEffectShadow;
+  h2 {
+    text-align: center;
+    margin-bottom: 9px;
+  }
+  label {
+    padding: 0.25rem 0rem 0.25rem 0.75rem;
+    .buttonSelectFiles {
+      margin: 1rem 1rem 1rem 0.5rem;
+      padding: 0.25rem;
+      width: 19rem;
+      border-radius: 10px;
+      color: rgb(189, 242, 226);
+      border: 0;
+      box-shadow: 0.25rem 0.25rem 0.75rem 0.25rem $colorEffectShadow;
+      background: linear-gradient(90deg, #00033d 0%, #4b54ff1c 96%);
+      display: inline-block;
+      text-align: center;
+    }
+    input {
+      color: $fontColorSecondary;
+      width: 80vw;
+      margin-left: 0.5rem;
+      border-radius: 5px;
+      padding: 3px;
+      background-color: $colorPrimary;
+      border: 1px solid rgb(125, 123, 123);
+    }
+    input::placeholder {
+      color: $fontColorSecondary;
+    }
+  }
+  .buttoPostAndUpdateProject {
+    margin: 1rem;
+    padding: 0.5rem;
+    width: 11rem;
+    border-radius: 20px;
+    color: rgb(189, 242, 226);
+    border: 0;
+    box-shadow: 0.25rem 0.25rem 0.75rem 0.25rem $colorEffectShadow;
+    background: linear-gradient(90deg, #00033d 0%, #4b54ff1c 96%);
+  }
+}
+.containerElementsToUpdateOrDelete {
+  margin: 0.25rem 0.15rem 1rem 0.15rem;
+  padding: 1rem 0rem 1rem 0rem;
+  h2 {
+    text-align: center;
+  }
+  .renderPrevWindowUpdateProject {
+    @extend .containerFormPostNewProject;
+    margin: 2rem 0rem 1.5rem 0rem;
+    padding: 0.75rem 0rem 1.25rem 0rem;
+    border-radius: 10px;
+    box-shadow: 0.15rem 0.15rem 0.75rem 0.15rem $colorEffectShadow;
+    label {
+      input::placeholder {
+        color: $fontColorDetails;
+      }
+    }
+    button {
+      @extend .buttoPostAndUpdateProject;
+    }
+    .buttonCancelUpdate {
+      @extend .buttoPostAndUpdateProject;
+    }
+  }
+  .containerPrevProjectsToDel {
+    margin: 2rem 0rem 1.5rem 0rem;
+    padding: 0.75rem 0rem 1.25rem 0rem;
+    border-radius: 10px;
+    box-shadow: 0.15rem 0.15rem 0.75rem 0.15rem $colorEffectShadow;
+    h3 {
+      padding: 0.75rem;
+    }
+    p {
+      padding: 0.75rem;
+    }
+    span {
+      text-align: end;
+      padding-right: 1.5rem;
+      display: block;
+      cursor: pointer;
+    }
+  }
+}
+.containerPreviewImages {
+  padding: 0.15rem 0.15rem 0.15rem 0.15rem;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .containerAimage {
+    width: 50%;
+    position: relative;
+    border: 1px solid red;
+    button {
+      position: absolute;
+      width: 15px;
+      margin: 7px;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
