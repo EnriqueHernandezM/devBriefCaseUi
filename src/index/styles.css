@@ -1,0 +1,411 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #020033;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.navBar {
+  background-color: #000338;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.15rem 0.5rem 1.15rem 0.5rem;
+}
+.navBar .titlePage {
+  cursor: pointer;
+  font-size: 1.75rem;
+  padding: 0rem 0rem 0rem 0.75rem;
+}
+.navBar .titlePage .linkHome {
+  text-decoration: none;
+  color: #c4d2ee;
+}
+.navBar .titlePage .linkHome:hover {
+  color: #ced7ea;
+}
+@media (min-width: 768px) {
+  .navBar .titlePage {
+    font-size: 2.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .navBar .titlePage {
+    font-size: 3.25rem;
+  }
+}
+.navBar ul {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+  .navBar ul {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .navBar ul {
+    font-size: 2.5rem;
+  }
+}
+.navBar ul li {
+  cursor: pointer;
+  list-style: none;
+}
+.navBar ul li .linkSkills, .navBar ul li .linkKnow {
+  text-decoration: none;
+  color: #c4d2ee;
+}
+.navBar ul li .linkSkills:hover, .navBar ul li .linkKnow:hover {
+  color: #ced7ea;
+}
+.navBar ul li .logoAdminConnect {
+  width: 2rem;
+  filter: brightness(1.1);
+  mix-blend-mode: multiply;
+}
+@media (min-width: 768px) {
+  .navBar ul li .logoAdminConnect {
+    width: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .navBar ul li .logoAdminConnect {
+    width: 3rem;
+  }
+}
+.navBar ul li .linkKnow:hover {
+  color: #ced7ea;
+}
+
+.containerCardOneProject {
+  color: #c4d2ee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  padding: 1.25rem;
+  background-color: #000345;
+  border-radius: 20px;
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.containerCardOneProject .carouselImgs {
+  position: relative;
+  width: 99%;
+  height: 30vh;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .carouselImgs {
+    width: 99%;
+    height: 47vh;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .carouselImgs {
+    width: 49%;
+    height: 80vh;
+  }
+}
+.containerCardOneProject .carouselImgs img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .carouselImgs img {
+    width: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .carouselImgs img {
+    width: 100%;
+  }
+}
+.containerCardOneProject .carouselImgs .img1, .containerCardOneProject .carouselImgs .img4, .containerCardOneProject .carouselImgs .img3, .containerCardOneProject .carouselImgs .img2 {
+  position: absolute;
+}
+.containerCardOneProject .carouselImgs .buttonsCarousel {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.containerCardOneProject .carouselImgs .buttonsCarousel .chevronLeft img {
+  width: 2rem;
+  height: 4rem;
+  margin: 1rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .carouselImgs .buttonsCarousel .chevronLeft img {
+    width: 4rem;
+    height: 8rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .carouselImgs .buttonsCarousel .chevronLeft img {
+    width: 5rem;
+    height: 10rem;
+  }
+}
+.containerCardOneProject .carouselImgs .buttonsCarousel .chevronRight img {
+  width: 2rem;
+  height: 4rem;
+  margin: 1rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .carouselImgs .buttonsCarousel .chevronRight img {
+    width: 4rem;
+    height: 8rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .carouselImgs .buttonsCarousel .chevronRight img {
+    width: 5rem;
+    height: 10rem;
+  }
+}
+.containerCardOneProject .textsCard {
+  margin-top: 1rem;
+  padding: 1.75rem 0rem 0rem 0rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .textsCard {
+    margin-top: 1.5rem;
+    padding: 3rem 0rem 0rem 0rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .textsCard {
+    width: 49%;
+    margin-top: 0rem;
+    padding: 0.25rem 0rem 0rem 0rem;
+  }
+}
+.containerCardOneProject .textsCard h1 {
+  padding: 0.25rem 0rem 0rem 0rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .textsCard h1 {
+    padding: 0.25rem 0rem 0rem 0rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .textsCard h1 {
+    padding: 0.25rem 0rem 0rem 0rem;
+  }
+}
+.containerCardOneProject .textsCard p {
+  font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .textsCard p {
+    font-size: 2.25rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .textsCard p {
+    font-size: 2.25rem;
+  }
+}
+.containerCardOneProject .textsCard a {
+  text-decoration: none;
+  color: #00ffff;
+}
+.containerCardOneProject .textsCard span {
+  padding: 0.4rem;
+}
+.containerCardOneProject .textsCard span::before {
+  content: "#";
+}
+
+.msgeNotProjects {
+  text-align: center;
+  color: #00ffff;
+  padding: 0.25rem 0rem 0rem 0rem;
+  margin: 5rem;
+  font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+  .msgeNotProjects {
+    padding: 0.25rem 0rem 0rem 0rem;
+    font-size: 2.25rem;
+  }
+}
+@media (min-width: 1024px) {
+  .msgeNotProjects {
+    padding: 0.25rem 0rem 0rem 0rem;
+    font-size: 2.25rem;
+  }
+}
+
+.containerAdminPanel {
+  color: #ced7ea;
+  padding: 1rem;
+  font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+  .containerAdminPanel {
+    font-size: 2.25rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerAdminPanel {
+    font-size: 2.25rem;
+  }
+}
+.containerAdminPanel div {
+  text-align: end;
+}
+.containerAdminPanel div .buttonLogOut {
+  margin: 1rem;
+  padding: 0.5rem;
+  width: 11rem;
+  border-radius: 20px;
+  color: rgb(189, 242, 226);
+  border: 0;
+  box-shadow: 0.25rem 0.25rem 0.75rem 0.25rem #01015b;
+  background: linear-gradient(90deg, #484644 0%, rgba(250, 72, 2, 0.1098039216) 96%);
+}
+
+.containerFormPostNewProject, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0rem 2rem 0rem;
+  margin: 0.75rem 0.15rem 1rem 0.15rem;
+  border-radius: 10px;
+  box-shadow: 0rem 0.15rem 1.15rem 0.35rem #01015b;
+}
+.containerFormPostNewProject h2, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject h2 {
+  text-align: center;
+  margin-bottom: 9px;
+}
+.containerFormPostNewProject label, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label {
+  padding: 0.25rem 0rem 0.25rem 0.75rem;
+}
+.containerFormPostNewProject label .buttonSelectFiles, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label .buttonSelectFiles {
+  margin: 1rem 1rem 1rem 0.5rem;
+  padding: 0.25rem;
+  width: 19rem;
+  border-radius: 10px;
+  color: rgb(189, 242, 226);
+  border: 0;
+  box-shadow: 0.25rem 0.25rem 0.75rem 0.25rem #01015b;
+  background: linear-gradient(90deg, #00033d 0%, rgba(75, 84, 255, 0.1098039216) 96%);
+  display: inline-block;
+  text-align: center;
+}
+.containerFormPostNewProject label input, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label input {
+  color: #c4d2ee;
+  width: 80vw;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+  padding: 3px;
+  background-color: #020033;
+  border: 1px solid rgb(125, 123, 123);
+}
+.containerFormPostNewProject label input::placeholder, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label input::placeholder {
+  color: #c4d2ee;
+}
+.containerFormPostNewProject .buttoPostAndUpdateProject, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject .buttoPostAndUpdateProject, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject .buttonCancelUpdate, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject button {
+  margin: 1rem;
+  padding: 0.5rem;
+  width: 11rem;
+  border-radius: 20px;
+  color: rgb(189, 242, 226);
+  border: 0;
+  box-shadow: 0.25rem 0.25rem 0.75rem 0.25rem #01015b;
+  background: linear-gradient(90deg, #00033d 0%, rgba(75, 84, 255, 0.1098039216) 96%);
+}
+
+.containerElementsToUpdateOrDelete {
+  margin: 0.25rem 0.15rem 1rem 0.15rem;
+  padding: 1rem 0rem 1rem 0rem;
+}
+.containerElementsToUpdateOrDelete h2 {
+  text-align: center;
+}
+.containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject {
+  margin: 2rem 0rem 1.5rem 0rem;
+  padding: 0.75rem 0rem 1.25rem 0rem;
+  border-radius: 10px;
+  box-shadow: 0.15rem 0.15rem 0.75rem 0.15rem #01015b;
+}
+.containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label input::placeholder {
+  color: #00ffff;
+}
+.containerElementsToUpdateOrDelete .containerPrevProjectsToDel {
+  margin: 2rem 0rem 1.5rem 0rem;
+  padding: 0.75rem 0rem 1.25rem 0rem;
+  border-radius: 10px;
+  box-shadow: 0.15rem 0.15rem 0.75rem 0.15rem #01015b;
+}
+.containerElementsToUpdateOrDelete .containerPrevProjectsToDel h3 {
+  padding: 0.75rem;
+}
+.containerElementsToUpdateOrDelete .containerPrevProjectsToDel p {
+  padding: 0.75rem;
+}
+.containerElementsToUpdateOrDelete .containerPrevProjectsToDel span {
+  text-align: end;
+  padding-right: 1.5rem;
+  display: block;
+  cursor: pointer;
+}
+
+.containerPreviewImages {
+  padding: 0.15rem 0.15rem 0.15rem 0.15rem;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.containerPreviewImages .containerAimage {
+  width: 50%;
+  position: relative;
+  border: 1px solid red;
+}
+.containerPreviewImages .containerAimage button {
+  position: absolute;
+  width: 15px;
+  margin: 7px;
+}
+.containerPreviewImages .containerAimage img {
+  width: 100%;
+}
+
+.formLoginAdmin {
+  color: #ced7ea;
+}
+.footerContain {
+  padding: 0.25rem;
+  color: #c4d2ee;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 2px;
+  grid-auto-rows: minmax(70px, auto);
+  justify-items: center;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .footerContain {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}/*# sourceMappingURL=styles.css.map */

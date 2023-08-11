@@ -19,10 +19,8 @@ async function postNewProjectToApi(body) {
       "http://localhost:8081/api/v1/postAnewProject",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
+        credentials: "include",
+        body: body,
       }
     );
     const resToApi = await postNewProject.json();
@@ -37,10 +35,9 @@ async function updateAprojectFromApi(idProject, newBody) {
       `http://localhost:8081/api/v1/modifiedAProject/${idProject}`,
       {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newBody),
+        credentials: "include",
+
+        body: newBody,
       }
     );
     const resUpdateProject = await updateAproject.json();
@@ -56,6 +53,7 @@ async function deleteOnProjectFromApi(id) {
       `http://localhost:8081/api/v1/deleteAproject/${id}`,
       {
         method: "DELETE",
+        credentials: "include",
       }
     );
     //competadr

@@ -1,0 +1,42 @@
+.swal-overlay {
+  background-color: rgba(0, 0, 0, 0.872);
+}
+.swal-modal {
+  background: linear-gradient(90deg, #00033d 0%, #4b54ff1c 96%);
+  color: antiquewhite;
+}
+.swal-title {
+  color: $fontColorDetails;
+  font-size: 2rem;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+  margin-bottom: 28px;
+}
+.swal-text {
+  display: block;
+  margin: 12px;
+  font-size: 1.6rem;
+  text-align: center;
+  color: $fontColorDetails;
+}
+.swal-button--confirm {
+  color: $fontColorDetails;
+  background-color: #01194500;
+  padding: 7px 19px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.swal-button--cancel {
+  color: $fontColorDetails;
+  background-color: #01194500;
+  padding: 7px 19px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.swal-button--confirm:hover {
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+}
+
+.swal-button--cancel:hover {
+  color: rgb(19, 18, 18);
+}

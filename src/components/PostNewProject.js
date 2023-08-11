@@ -1,23 +1,47 @@
 import React from "react";
 import { postNewProjectToApi } from "../api/projectsApi";
-
+import { toast } from "react-toastify";
 export default function PostNewProject() {
   const [valuesProject, setValuesProject] = React.useState({
     nameProject: "",
     tagsProject: "",
     description: "",
-    imagesProject: "",
     urlProject: "",
   });
   const [images, setimages] = React.useState([]);
+  const [imagesFiles, setImagesFiles] = React.useState([]);
+
   const postProject = (event) => {
     event.preventDefault();
-    let tagsProject = valuesProject.tagsProject.split(",");
-    const valuesToEnv = { ...valuesProject, tagsProject };
-    postNewProjectToApi(valuesToEnv)
-      .then((res) => console.log(res))
+    const formData = new FormData();
+    formData.append("nameProject", valuesProject.nameProject);
+    formData.append("tagsProject", valuesProject.tagsProject);
+    formData.append("description", valuesProject.description);
+    formData.append("urlProject", valuesProject.urlProject);
+
+    for (const file of imagesFiles) {
+      formData.append("files", file);
+    }
+    postNewProjectToApi(formData)
+      .then((res) => {
+        if (res.session === false) {
+          toast.warn(
+            "Remember only Admins! You can only see this page for reading purposes",
+            {
+              position: "top-center",
+              autoClose: 3000,
+              pauseOnHover: false,
+              theme: "dark",
+            }
+          );
+        }
+        if (res.succes === true) {
+          window.location = "/";
+        }
+      })
       .catch((err) => err);
   };
+
   const changesFormNewProject = (event) => {
     setValuesProject((prevValues) => {
       const { name, value } = event.target;
@@ -36,12 +60,20 @@ export default function PostNewProject() {
     }
     let newImgsToState = readmultifiles(e, indexImg);
     let newImgsState = [...images, ...newImgsToState];
+    if (newImgsState.length > 4) {
+      toast.warn("Remember only four images!!", {
+        position: "top-center",
+        autoClose: 3000,
+        pauseOnHover: false,
+        theme: "dark",
+      });
+      return;
+    }
     setimages(newImgsState);
-
-    console.log(newImgsState);
   };
   function readmultifiles(e, indexInicial) {
     const files = e.currentTarget.files;
+    setImagesFiles(files);
     const arrayImages = [];
     Object.keys(files).forEach((i) => {
       const file = files[i];
@@ -103,11 +135,11 @@ export default function PostNewProject() {
         <span className="buttonSelectFiles">Select Files </span>
         <input hidden type="file" multiple onChange={changeInputImage} />
       </label>
-      {/* VIEW IMAGES */}
+      {/* PREVIEW IMAGES */}
       <div className="containerPreviewImages">
         {images.map((imagen) => (
           <div className="containerAimage" key={imagen.index}>
-            <button className="" onClick={deleteImg.bind(this, imagen.index)}>
+            <button className="" onClick={deleteImg.bind("this", imagen.index)}>
               x
             </button>
             <img

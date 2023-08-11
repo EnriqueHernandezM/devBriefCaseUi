@@ -7,7 +7,9 @@ import {
   deleteOnProjectFromApi,
   updateAprojectFromApi,
 } from "../api/projectsApi";
-export default function AdminPanel() {
+import { logOutAdmin } from "../api/adminApi.js";
+import { toast } from "react-toastify";
+export default function AdminPanel({ session }) {
   const [allProjectsTo, setAllProjectsTo] = React.useState([]);
 
   React.useEffect(() => {
@@ -18,19 +20,64 @@ export default function AdminPanel() {
 
   const deleteAproject = (id) => {
     deleteOnProjectFromApi(id)
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (res.session === false) {
+          toast.warn(
+            "Remember only Admins! You can only see this page for reading purposes",
+            {
+              position: "top-center",
+              autoClose: 3000,
+              pauseOnHover: false,
+              theme: "dark",
+            }
+          );
+        }
+        if (res.msge === true) {
+          window.location = "/know";
+        }
+      })
       .catch((err) => err);
   };
-  const updateAproject = (event, idProject, newBody) => {
+  const updateAproject = (event, idProject, newBody, filesPut) => {
     event.preventDefault();
-    let tagsProject = newBody.tagsProject.split(",");
-    const valuesToEnv = { ...newBody, tagsProject };
-    updateAprojectFromApi(idProject, valuesToEnv)
-      .then((res) => console.log(res))
+    const formData = new FormData();
+    formData.append("nameProject", newBody.nameProject);
+    formData.append("tagsProject", newBody.tagsProject);
+    formData.append("description", newBody.description);
+    formData.append("urlProject", newBody.urlProject);
+    for (const file of filesPut) {
+      formData.append("files", file);
+    }
+    updateAprojectFromApi(idProject, formData)
+      .then((res) => {
+        if (res.session === false) {
+          toast.warn(
+            "Remember only Admins! You can only see this page for reading purposes",
+            {
+              position: "top-center",
+              autoClose: 3000,
+              pauseOnHover: false,
+              theme: "dark",
+            }
+          );
+        }
+        console.log(res);
+      })
       .catch((err) => err);
   };
+  const logOutSession = () => {
+    logOutAdmin()
+      .then((window.location = "/"))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className={"containerAdminPanel"}>
+      <div>
+        <button className="buttonLogOut" onClick={logOutSession}>
+          log Out
+        </button>
+      </div>
       <PostNewProject />
       <UpdateOrDeleteProjects
         arrProjects={allProjectsTo}

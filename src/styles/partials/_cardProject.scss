@@ -92,7 +92,14 @@
       }
     }
   }
-
+  @keyframes desaparecer {
+    50% {
+      opacity: 100;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
   .textsCard {
     margin-top: 1rem;
     padding: 1.75rem 0rem 0rem 0rem;
@@ -135,5 +142,21 @@
     span::before {
       content: "#";
     }
+  }
+}
+
+.msgeNotProjects {
+  text-align: center;
+  color: $fontColorDetails;
+  padding: 0.25rem 0rem 0rem 0rem;
+  margin: 5rem;
+  font-size: $fontSizeMobile;
+  @include mobileHorizontalAndTabletVertical {
+    padding: 0.25rem 0rem 0rem 0rem;
+    font-size: $fontSizeTablet;
+  }
+  @include tabletHorixzontalAndDesk {
+    padding: 0.25rem 0rem 0rem 0rem;
+    font-size: $fontSizeDesktop;
   }
 }

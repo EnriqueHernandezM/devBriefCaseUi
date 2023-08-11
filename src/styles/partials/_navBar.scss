@@ -43,9 +43,22 @@
       .linkSkills:hover {
         color: $fontColorPrimary;
       }
+
+      .logoAdminConnect {
+        width: 2rem;
+        filter: brightness(1.1);
+        mix-blend-mode: multiply;
+        @include mobileHorizontalAndTabletVertical {
+          width: 4rem;
+        }
+        @include tabletHorixzontalAndDesk {
+          width: 3rem;
+        }
+      }
       .linkKnow {
         @extend .linkSkills;
       }
+
       .linkKnow:hover {
         color: $fontColorPrimary;
       }

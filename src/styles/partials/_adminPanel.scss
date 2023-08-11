@@ -8,6 +8,18 @@
   @include tabletHorixzontalAndDesk {
     font-size: $fontSizeDesktop;
   }
+  div {
+    .buttonLogOut {
+      margin: 1rem;
+      padding: 0.5rem;
+      width: 11rem;
+      border-radius: 20px;
+      color: rgb(189, 242, 226);
+      border: 0;
+      box-shadow: 0.25rem 0.25rem 0.75rem 0.25rem $colorEffectShadow;
+      background: linear-gradient(90deg, #484644 0%, #fa48021c 96%);
+    }
+  }
 }
 .containerFormPostNewProject {
   display: flex;
@@ -120,6 +132,64 @@
     }
     img {
       width: 100%;
+    }
+  }
+}
+.formLoginAdmin {
+  border-radius: 25px;
+  padding: 0.1rem 0.55rem 1.5rem 0.55rem;
+  width: 80%;
+  background: rgba(0, 0, 0, 0.864);
+  position: absolute;
+  left: 10%;
+  top: 25%;
+  color: $fontColorPrimary;
+  box-shadow: 0.25rem 0.25rem 2.75rem 0.25rem rgb(0, 0, 0);
+  @include mobileHorizontalAndTabletVertical {
+  }
+  @include tabletHorixzontalAndDesk {
+  }
+  h4 {
+    display: inline-block;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    @include mobileHorizontalAndTabletVertical {
+      font-size: 2rem;
+    }
+    @include tabletHorixzontalAndDesk {
+      font-size: 2.1rem;
+    }
+  }
+  span {
+    margin-left: 40%;
+    font-size: $fontSizeMobile;
+    @include mobileHorizontalAndTabletVertical {
+      margin-left: 63%;
+    }
+    @include tabletHorixzontalAndDesk {
+      margin-left: 75%;
+    }
+  }
+  form {
+    label {
+      input {
+        color: $fontColorSecondary;
+        padding: 0.25rem;
+        margin: 0.25rem;
+        background-color: #e2e4f125;
+        border: 1px solid rgb(7, 7, 7);
+        border-radius: 10px;
+      }
+    }
+    button {
+      width: 5rem;
+      border-radius: 9px;
+      margin-left: 1.5rem;
+      padding: 0.25rem 0.45rem 0.25rem 0.45rem;
+      color: rgb(189, 242, 226);
+      border: 0;
+      box-shadow: 0.15rem 0.15rem 0.75rem 0.25rem $colorEffectShadow;
+      background: linear-gradient(90deg, #00033d 0%, #4b54ff1c 96%);
     }
   }
 }
