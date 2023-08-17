@@ -11,7 +11,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
   }
   .carouselImgs {
     position: relative;
@@ -92,19 +92,12 @@
       }
     }
   }
-  @keyframes desaparecer {
-    50% {
-      opacity: 100;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
+
   .textsCard {
     margin-top: 1rem;
-    padding: 1.75rem 0rem 0rem 0rem;
+    padding: 1rem 0rem 0rem 0rem;
     @include mobileHorizontalAndTabletVertical {
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       padding: 3rem 0rem 0rem 0rem;
     }
     @include tabletHorixzontalAndDesk {
@@ -113,16 +106,20 @@
       padding: 0.25rem 0rem 0rem 0rem;
     }
     h1 {
-      padding: 0.25rem 0rem 0rem 0rem;
+      font-size: 1.75rem;
+      padding: 0.25rem 0rem 0.5rem 0rem;
       @include mobileHorizontalAndTabletVertical {
-        padding: 0.25rem 0rem 0rem 0rem;
+        padding: 0.25rem 0rem 0.75rem 0rem;
+        font-size: 3.75rem;
       }
       @include tabletHorixzontalAndDesk {
-        padding: 0.25rem 0rem 0rem 0rem;
+        padding: 0.25rem 0rem 1rem 0rem;
+        font-size: 3rem;
       }
     }
     p {
       font-size: $fontSizeMobile;
+      margin-bottom: 1rem;
       @include mobileHorizontalAndTabletVertical {
         font-size: $fontSizeTablet;
       }
@@ -133,14 +130,34 @@
     a {
       text-decoration: none;
       color: $fontColorDetails;
+      font-size: 1.5rem;
+      display: block;
+      text-align: right;
+      padding: 1rem;
+      @include mobileHorizontalAndTabletVertical {
+        font-size: 2.75rem;
+      }
+      @include tabletHorixzontalAndDesk {
+        font-size: 2.75rem;
+      }
     }
     span {
+      display: inline-block;
       padding: 0.4rem;
       @include mobileHorizontalAndTabletVertical {
+        font-size: 2.75rem;
+      }
+      @include tabletHorixzontalAndDesk {
+        padding: 0.4rem;
+        font-size: 2.25rem;
       }
     }
     span::before {
       content: "#";
+      color: $fontColorDetails;
+      @include mobileHorizontalAndTabletVertical {
+        font-size: 2rem;
+      }
     }
   }
 }

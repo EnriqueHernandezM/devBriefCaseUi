@@ -23,6 +23,7 @@ export default function UpdateOrDeleteProjects(allRecived) {
           urlProject: el.urlProject,
         });
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const changeUpdateInputs = (event) => {

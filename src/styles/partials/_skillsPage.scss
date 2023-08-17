@@ -1,0 +1,228 @@
+.containerSkills {
+  margin-bottom: 100vh;
+  @include mobileHorizontalAndTabletVertical {
+    margin-bottom: 86vh;
+  }
+  @include tabletHorixzontalAndDesk {
+    margin-bottom: 160vh;
+  }
+
+  .imagesSkills {
+    width: 20%;
+    height: 11%;
+    border-radius: 7px;
+    @include mobileHorizontalAndTabletVertical {
+      margin-top: 3rem;
+    }
+    @include tabletHorixzontalAndDesk {
+      width: 10%;
+      height: 22%;
+      padding: 2px;
+    }
+  }
+}
+$topPosition: (
+  firstRow: 9rem,
+  secondRow: 18rem,
+  thirdRow: 27rem,
+  fourthRow: 36rem,
+  fifthRow: 45rem,
+  sixthRow: 54rem,
+);
+$topPositionMobileAndTablet: (
+  firstRow: 9rem,
+  secondRow: 21rem,
+  thirdRow: 33rem,
+  fourthRow: 45rem,
+  fifthRow: 57rem,
+  sixthRow: 72rem,
+);
+$leftPosition: (
+  firstColumn: 10%,
+  secondColum: 40%,
+  thirdColumn: 70%,
+);
+$leftPositionDesktop: (
+  firstColumn: 15%,
+  secondColum: 35%,
+  thirdColumn: 55%,
+  fourthColumn: 75%,
+);
+.htmlLogo {
+  position: absolute;
+  animation-name: shea;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s;
+  left: map-get($leftPosition, firstColumn);
+  top: map-get($topPosition, firstRow);
+  @include mobileHorizontalAndTabletVertical {
+  }
+  @include tabletHorixzontalAndDesk {
+    left: map-get($leftPositionDesktop, firstColumn);
+  }
+}
+.scssLogo {
+  left: map-get($leftPosition, secondColum);
+  @extend .htmlLogo;
+  @include tabletHorixzontalAndDesk {
+    left: map-get($leftPositionDesktop, secondColum);
+  }
+}
+.javaScriptLogo {
+  left: map-get($leftPosition, thirdColumn);
+  @extend .htmlLogo;
+  @include tabletHorixzontalAndDesk {
+    left: map-get($leftPositionDesktop, thirdColumn);
+  }
+}
+.reactLogo {
+  top: map-get($topPosition, secondRow);
+  left: map-get($leftPosition, firstColumn);
+  @extend .htmlLogo;
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, secondRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    top: map-get($topPositionMobileAndTablet, firstRow);
+    left: map-get($leftPositionDesktop, fourthColumn);
+  }
+}
+.typeScriptLogo {
+  @extend .htmlLogo;
+  top: map-get($topPosition, secondRow);
+  left: map-get($leftPosition, secondColum);
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, secondRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    left: map-get($leftPositionDesktop, firstColumn);
+  }
+}
+.nodeLogo {
+  @extend .htmlLogo;
+  top: map-get($topPosition, secondRow);
+  left: map-get($leftPosition, thirdColumn);
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, secondRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    left: map-get($leftPositionDesktop, secondColum);
+  }
+}
+.nestJsLogo {
+  @extend .htmlLogo;
+  top: map-get($topPosition, thirdRow);
+  left: map-get($leftPosition, firstColumn);
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, thirdRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    top: map-get($topPositionMobileAndTablet, secondRow);
+    left: map-get($leftPositionDesktop, thirdColumn);
+  }
+}
+.gitHubLogo {
+  @extend .htmlLogo;
+  top: map-get($topPosition, thirdRow);
+  left: map-get($leftPosition, secondColum);
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, thirdRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    top: map-get($topPositionMobileAndTablet, secondRow);
+    left: map-get($leftPositionDesktop, fourthColumn);
+  }
+}
+.awsLogo {
+  @extend .htmlLogo;
+  top: map-get($topPosition, thirdRow);
+  left: map-get($leftPosition, thirdColumn);
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, thirdRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    left: map-get($leftPositionDesktop, firstColumn);
+  }
+}
+.bootStrapLogo {
+  @extend .htmlLogo;
+  top: map-get($topPosition, fourthRow);
+  left: map-get($leftPosition, firstColumn);
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, fourthRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    top: map-get($topPositionMobileAndTablet, thirdRow);
+    left: map-get($leftPositionDesktop, secondColum);
+  }
+}
+.firebaseLogo {
+  @extend .htmlLogo;
+  top: map-get($topPosition, fourthRow);
+  left: map-get($leftPosition, secondColum);
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, fourthRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    top: map-get($topPositionMobileAndTablet, thirdRow);
+    left: map-get($leftPositionDesktop, thirdColumn);
+  }
+}
+.mongoLogo {
+  @extend .htmlLogo;
+  top: map-get($topPosition, fourthRow);
+  left: map-get($leftPosition, thirdColumn);
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, fourthRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    top: map-get($topPositionMobileAndTablet, thirdRow);
+    left: map-get($leftPositionDesktop, fourthColumn);
+  }
+}
+.sqlLogo {
+  @extend .htmlLogo;
+  top: map-get($topPosition, fifthRow);
+  left: map-get($leftPosition, firstColumn);
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, fifthRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    left: map-get($leftPositionDesktop, firstColumn);
+    top: map-get($topPositionMobileAndTablet, fourthRow);
+  }
+}
+.knexLogo {
+  @extend .htmlLogo;
+  top: map-get($topPosition, fifthRow);
+  left: map-get($leftPosition, secondColum);
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, fifthRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    left: map-get($leftPositionDesktop, secondColum);
+
+    top: map-get($topPositionMobileAndTablet, fourthRow);
+  }
+}
+.sequelizeLogo {
+  @extend .htmlLogo;
+  top: map-get($topPosition, fifthRow);
+  left: map-get($leftPosition, thirdColumn);
+  @include mobileHorizontalAndTabletVertical {
+    top: map-get($topPositionMobileAndTablet, fifthRow);
+  }
+  @include tabletHorixzontalAndDesk {
+    left: map-get($leftPositionDesktop, thirdColumn);
+    top: map-get($topPositionMobileAndTablet, fourthRow);
+  }
+}
+@keyframes shea {
+  0% {
+    opacity: 0;
+    top: 4rem;
+  }
+
+  100% {
+  }
+}

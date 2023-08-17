@@ -37,6 +37,7 @@ export default function CardForProject({
   };
   React.useEffect(() => {
     setRenderImgs(fileOfImages[positionStatus]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [positionStatus]);
   const generateTags = tagsProject.map((el) => <span key={el}> {el}</span>);
   return (
@@ -56,8 +57,8 @@ export default function CardForProject({
       <div className="textsCard">
         <h1>{nameProject} </h1>
         <p>{description}</p>
-        <a href={urlProject}> Visit </a>
         {generateTags}
+        <a href={urlProject}> Visit </a>
       </div>
     </div>
   );

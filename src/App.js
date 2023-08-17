@@ -48,7 +48,10 @@ function App() {
         />
         <Routes>
           <Route path="/skills" element={<SkillsPage />} />
-          <Route path="/know" element={<AdminPanel {...adminGetData} />} />
+          <Route
+            path="/admin_panel"
+            element={<AdminPanel {...adminGetData} />}
+          />
           <Route path="/" element={<Home />} />
         </Routes>
 

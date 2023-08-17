@@ -96,7 +96,7 @@ export default function PostNewProject() {
   }
   return (
     <form onSubmit={postProject} className="containerFormPostNewProject">
-      <h2> Agrega un proyecto nuevo a tu portafolio</h2>
+      <h2>Add a new project </h2>
       <label>
         Project Name
         <input

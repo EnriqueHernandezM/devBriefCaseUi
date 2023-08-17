@@ -33,17 +33,15 @@ export default function NavBar({
       }
       if (value === null) {
         showToastMessage();
-        //window.location = "/know";
       }
     });
   }
-  //setRenderFormLogin((prev) => !prev);
 
   return (
     <header className="navBar">
       <h1 className="titlePage">
         <Link className="linkHome" to="/">
-          Briefcase
+          @Hi, I'm Enrique
         </Link>
       </h1>
       <ul>
@@ -53,7 +51,7 @@ export default function NavBar({
           </Link>
         </li>
         <li className="linkKnowLi">
-          <Link className="linkKnow" to={"/know"}>
+          <Link className="linkKnow" to={"/admin_panel"}>
             {session === true ? (
               <p>Admin panel</p>
             ) : (

@@ -33,7 +33,7 @@ export default function AdminPanel({ session }) {
           );
         }
         if (res.msge === true) {
-          window.location = "/know";
+          window.location = "/admin_panel";
         }
       })
       .catch((err) => err);
@@ -61,7 +61,9 @@ export default function AdminPanel({ session }) {
             }
           );
         }
-        console.log(res);
+        if (res.modified === true) {
+          window.location = "/admin_panel";
+        }
       })
       .catch((err) => err);
   };
@@ -73,7 +75,7 @@ export default function AdminPanel({ session }) {
 
   return (
     <div className={"containerAdminPanel"}>
-      <div>
+      <div className="containerButtonLogOut">
         <button className="buttonLogOut" onClick={logOutSession}>
           log Out
         </button>
