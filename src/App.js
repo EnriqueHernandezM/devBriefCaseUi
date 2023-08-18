@@ -5,7 +5,7 @@ import SkillsPage from "./components/SkillsPage";
 import Home from "./components/Home";
 import Footer from "./components/footer";
 import { getLoginAdmin, loginAdmin } from "./api/adminApi";
-
+import SideBar from "./components/SideBar";
 import AdminPanel from "./components/AdminPanel";
 function App() {
   const [adminForm, setAdminForm] = React.useState({
@@ -46,6 +46,7 @@ function App() {
           adminForm={adminForm}
           submitFormLogin={submitFormLogin}
         />
+        <SideBar />.
         <Routes>
           <Route path="/skills" element={<SkillsPage />} />
           <Route
@@ -54,7 +55,6 @@ function App() {
           />
           <Route path="/" element={<Home />} />
         </Routes>
-
         <Footer />
       </div>
     </Router>
