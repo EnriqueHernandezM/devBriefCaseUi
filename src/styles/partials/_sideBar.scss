@@ -1,39 +1,207 @@
 .sideBar {
   position: absolute;
-  width: 90%;
-  height: 100%;
+  width: 75%;
+  height: 95%;
   background-color: $colorTertiary;
   color: $fontColorPrimary;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem;
+  padding: 0.15rem 0.5rem 0.5rem 0.5rem;
   z-index: 4;
+  font-size: $fontSizeMobileSideBar;
+  animation-name: renderSideBar;
+  animation-duration: 1.2s;
+  animation-timing-function: ease;
+  box-shadow: 0.25rem 0.15rem 1.75rem 0.1rem rgb(0, 0, 0);
+  border-radius: 1px 10px 10px 1px;
   @include mobileHorizontalAndTabletVertical {
     width: 60%;
+    font-size: $fontSizeTabletSideBar;
+    height: 85%;
   }
   @include tabletHorixzontalAndDesk {
     width: 30%;
+    font-size: $fontSizeDesktopSideBar;
   }
-
-  img {
-    width: 50%;
-    height: 16rem;
+  .imgProgfile {
+    width: 30%;
+    height: 15%;
     border-radius: 50%;
     object-fit: cover;
-    margin: 1.5rem;
+    margin: 1rem;
+    @include mobileHorizontalAndTabletVertical {
+      height: 15%;
+    }
+    @include tabletHorixzontalAndDesk {
+      height: 23%;
+    }
   }
   h3 {
+    padding: 0.15rem;
+    margin-bottom: 4px;
   }
   h4 {
+    align-self: start;
+    padding: 0.15rem;
   }
   p {
+    animation: testAnim 1s ease;
+    padding: 5px 10px 5px 10px;
   }
-  button {
-    position: absolute;
-    right: -2rem;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 1px 10px 10px 1px;
+  .containersTwoLogos {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    animation: testAnim 1.8s ease-in;
+    .containerLogoGitHub > a {
+      .logoGitHub {
+        margin: 5px;
+        width: 90px;
+      }
+    }
+    .containerLogoLinke > a {
+      .logoLinke {
+        margin: 5px;
+        width: 70px;
+      }
+    }
   }
+}
+#buttonSideBar {
+  width: 3.3rem;
+  height: 3rem;
+  appearance: none;
+  background-color: $colorTertiary;
+  border-radius: 1px 10px 15px 1px;
+  position: absolute;
+  margin-top: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0rem 0.1rem 0.35rem 0.05rem;
+  animation: prescense 2s ease;
+  @include mobileHorizontalAndTabletVertical {
+    width: 5.5rem;
+  }
+}
+#buttonSideBar:checked {
+  box-shadow: 0.3rem 0.1rem 0.15rem 0.05rem;
+  border-radius: 1px 15px 15px 1px;
+  left: 75%;
+  animation: buttonMove 1.2s ease;
+  mix-blend-mode: difference;
+  @include mobileHorizontalAndTabletVertical {
+    left: 60%;
+  }
+  @include tabletHorixzontalAndDesk {
+    left: 30%;
+  }
+}
+#buttonSideBar:checked::after {
+  content: "🢀";
+  font-size: 1.25rem;
+  margin-left: 5px;
+  top: 10px;
+  @include mobileHorizontalAndTabletVertical {
+    font-size: 1.75rem;
+    left: 24px;
+    top: 3px;
+  }
+}
+#buttonSideBar::after {
+  content: "know me";
+  font-size: 1rem;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  color: $fontColorDetails;
+  animation-name: inherit;
+  @include mobileHorizontalAndTabletVertical {
+    font-size: 1.15rem;
+    left: 7px;
+    top: 13px;
+  }
+}
+#buttonSideBar:hover::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgb(40, 232, 203),
+    blue,
+    black,
+    blue,
+    rgb(129, 58, 250),
+    blue,
+    black
+  );
+  background-size: 400%;
+  border-radius: 10px;
+  filter: blur(5px);
+  animation: glow 20s linear infinite;
+}
+
+@keyframes renderSideBar {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.1;
+  }
+  100% {
+  }
+}
+@keyframes prescense {
+  0% {
+    left: -1rem;
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    left: -0rem;
+    transform: scale(1);
+    transform: scaleX(1.2);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+  }
+}
+@keyframes buttonMove {
+  0% {
+    left: 0%;
+  }
+
+  100% {
+  }
+}
+@keyframes testAnim {
+  0% {
+    display: none;
+  }
+  25% {
+    display: none;
+  }
+  50% {
+    display: none;
+    opacity: 0.2;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+  }
+}
+#containerAllSideBar {
+  display: none;
 }

@@ -36,14 +36,6 @@ export default function SkillsPage() {
       "https://seeklogo.com/images/S/sequelize-logo-9A5075DB9F-seeklogo.com.png",
   };
 
-  gsap.registerEffect({
-    name: "fade",
-    defaults: { duration: 2 },
-    effect: (targets, config) => {
-      return gsap.to(targets, { duration: config.duration, opacity: 0 });
-    },
-  });
-
   const onEnter = ({ currentTarget }) => {
     gsap.to(currentTarget, { scale: 1.2 });
   };

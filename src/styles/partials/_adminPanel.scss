@@ -38,7 +38,6 @@
     }
 
     .buttonLogOut:hover::before {
-      opacity: animationOn(sd);
       content: "";
       position: absolute;
       z-index: -1;
@@ -69,6 +68,7 @@
         background-position: 0 0;
       }
       50% {
+        display: none;
         background-position: 400% 0;
       }
       100% {

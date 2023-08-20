@@ -39,14 +39,14 @@ function App() {
 
   return (
     <Router>
-      <div className="">
+      <div>
         <NavBar
           {...adminGetData}
           changesOnFormLogin={changesOnFormLogin}
           adminForm={adminForm}
           submitFormLogin={submitFormLogin}
         />
-        <SideBar />.
+        <SideBar />
         <Routes>
           <Route path="/skills" element={<SkillsPage />} />
           <Route

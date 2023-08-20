@@ -52,6 +52,14 @@ export default function UpdateOrDeleteProjects(allRecived) {
           theme: "dark",
         });
         return;
+      } else if (newImgsState.length < 2) {
+        toast.warn("add one more image", {
+          position: "top-center",
+          autoClose: 3000,
+          pauseOnHover: false,
+          theme: "dark",
+        });
+        return;
       }
       setimagesPreview(newImgsState);
     };

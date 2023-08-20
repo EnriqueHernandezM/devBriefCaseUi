@@ -45,6 +45,15 @@ export default function AdminPanel({ session }) {
     formData.append("tagsProject", newBody.tagsProject);
     formData.append("description", newBody.description);
     formData.append("urlProject", newBody.urlProject);
+    if (filesPut.length === 0 || filesPut.length === 1) {
+      toast.warn("add one more image", {
+        position: "top-center",
+        autoClose: 3000,
+        pauseOnHover: false,
+        theme: "dark",
+      });
+      return;
+    }
     for (const file of filesPut) {
       formData.append("files", file);
     }

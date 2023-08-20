@@ -18,7 +18,15 @@ export default function PostNewProject() {
     formData.append("tagsProject", valuesProject.tagsProject);
     formData.append("description", valuesProject.description);
     formData.append("urlProject", valuesProject.urlProject);
-
+    if (images.length === 0 || images.length === 1) {
+      toast.warn("add one more image", {
+        position: "top-center",
+        autoClose: 3000,
+        pauseOnHover: false,
+        theme: "dark",
+      });
+      return;
+    }
     for (const file of imagesFiles) {
       formData.append("files", file);
     }
@@ -62,6 +70,14 @@ export default function PostNewProject() {
     let newImgsState = [...images, ...newImgsToState];
     if (newImgsState.length > 4) {
       toast.warn("Remember only four images!!", {
+        position: "top-center",
+        autoClose: 3000,
+        pauseOnHover: false,
+        theme: "dark",
+      });
+      return;
+    } else if (newImgsState.length < 2) {
+      toast.warn("add one more image", {
         position: "top-center",
         autoClose: 3000,
         pauseOnHover: false,

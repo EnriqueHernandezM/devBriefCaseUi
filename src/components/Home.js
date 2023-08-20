@@ -12,7 +12,7 @@ export default function Home() {
     return <CardForProject key={el.id} {...el} />;
   });
   return (
-    <div>
+    <div className="pageHome">
       {generateCardsProjects.length === 0 && (
         <h3 className="msgeNotProjects">No projects available</h3>
       )}
