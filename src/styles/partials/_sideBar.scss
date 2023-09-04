@@ -1,7 +1,6 @@
 .sideBar {
   position: absolute;
   width: 75%;
-  height: 95%;
   background-color: $colorTertiary;
   color: $fontColorPrimary;
   display: flex;
@@ -18,23 +17,23 @@
   @include mobileHorizontalAndTabletVertical {
     width: 60%;
     font-size: $fontSizeTabletSideBar;
-    height: 85%;
   }
+
   @include tabletHorixzontalAndDesk {
     width: 30%;
     font-size: $fontSizeDesktopSideBar;
   }
   .imgProgfile {
-    width: 30%;
-    height: 15%;
+    width: 40%;
+    height: 6.5rem;
     border-radius: 50%;
     object-fit: cover;
     margin: 1rem;
     @include mobileHorizontalAndTabletVertical {
-      height: 15%;
+      height: 12rem;
     }
     @include tabletHorixzontalAndDesk {
-      height: 23%;
+      height: 11rem;
     }
   }
   h3 {
@@ -60,13 +59,19 @@
     .containerLogoGitHub > a {
       .logoGitHub {
         margin: 5px;
-        width: 90px;
+        width: 60px;
+        @include mobileHorizontalAndTabletVertical {
+          width: 90px;
+        }
       }
     }
     .containerLogoLinke > a {
       .logoLinke {
         margin: 5px;
-        width: 70px;
+        width: 45px;
+        @include mobileHorizontalAndTabletVertical {
+          width: 60px;
+        }
       }
     }
   }
@@ -83,7 +88,12 @@
   box-shadow: 0rem 0.1rem 0.35rem 0.05rem;
   animation: prescense 2s ease;
   @include mobileHorizontalAndTabletVertical {
-    width: 5.5rem;
+    width: 6.5rem;
+    height: 4rem;
+  }
+  @include tabletHorixzontalAndDesk {
+    width: 6.75rem;
+    height: 4rem;
   }
 }
 #buttonSideBar:checked {
@@ -96,6 +106,7 @@
     left: 60%;
   }
   @include tabletHorixzontalAndDesk {
+    width: 4rem;
     left: 30%;
   }
 }
@@ -105,8 +116,12 @@
   margin-left: 5px;
   top: 10px;
   @include mobileHorizontalAndTabletVertical {
-    font-size: 1.75rem;
-    left: 24px;
+    font-size: 2.5rem;
+    left: 22px;
+    top: 5px;
+  }
+  @include tabletHorixzontalAndDesk {
+    left: 5px;
     top: 3px;
   }
 }
@@ -119,9 +134,14 @@
   color: $fontColorDetails;
   animation-name: inherit;
   @include mobileHorizontalAndTabletVertical {
-    font-size: 1.15rem;
-    left: 7px;
-    top: 13px;
+    font-size: 1.3rem;
+    left: 11px;
+    top: 20px;
+  }
+  @include tabletHorixzontalAndDesk {
+    font-size: 1.35rem;
+    left: 11px;
+    top: 20px;
   }
 }
 #buttonSideBar:hover::before {

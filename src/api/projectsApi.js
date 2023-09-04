@@ -1,7 +1,7 @@
 async function getAllProjectsToApi() {
   try {
     const allDataProjects = await fetch(
-      "http://localhost:8081/api/v1/getAllProjects"
+      "https://briefcase.fly.dev/api_briefcase/v1/getAllProjects"
     );
     if (!allDataProjects.ok) {
       throw new Error("err in Api ");
@@ -16,7 +16,7 @@ async function getAllProjectsToApi() {
 async function postNewProjectToApi(body) {
   try {
     const postNewProject = await fetch(
-      "http://localhost:8081/api/v1/postAnewProject",
+      "https://briefcase.fly.dev/api_briefcase/v1/postAnewProject",
       {
         method: "POST",
         credentials: "include",
@@ -32,7 +32,7 @@ async function postNewProjectToApi(body) {
 async function updateAprojectFromApi(idProject, newBody) {
   try {
     const updateAproject = await fetch(
-      `http://localhost:8081/api/v1/modifiedAProject/${idProject}`,
+      `https://briefcase.fly.dev/api_briefcase/v1/modifiedAProject/${idProject}`,
       {
         method: "PUT",
         credentials: "include",
@@ -50,7 +50,7 @@ async function updateAprojectFromApi(idProject, newBody) {
 async function deleteOnProjectFromApi(id) {
   try {
     const deleteElement = await fetch(
-      `http://localhost:8081/api/v1/deleteAproject/${id}`,
+      `https://briefcase.fly.dev/api_briefcase/v1/deleteAproject/${id}`,
       {
         method: "DELETE",
         credentials: "include",

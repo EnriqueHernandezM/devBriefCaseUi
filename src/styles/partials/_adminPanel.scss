@@ -7,6 +7,7 @@
   }
   @include tabletHorixzontalAndDesk {
     font-size: $fontSizeDesktop;
+    padding: 3rem;
   }
   .containerButtonLogOut {
     display: flex;

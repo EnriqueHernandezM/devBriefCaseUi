@@ -9,17 +9,18 @@
       text-decoration: none;
       color: $fontColorSecondary;
     }
-    .linkHome:hover {
-      color: $fontColorPrimary;
-    }
-    cursor: pointer;
     font-size: 1.5rem;
+    cursor: pointer;
     padding: 0rem 0rem 0rem 0.75rem;
     @include mobileHorizontalAndTabletVertical {
       font-size: 2.75rem;
     }
     @include tabletHorixzontalAndDesk {
       font-size: 3rem;
+      .linkHome:hover {
+        font-size: 3.01rem;
+        color: $fontColorPrimary;
+      }
     }
   }
   ul {
@@ -41,8 +42,11 @@
         text-decoration: none;
         color: $fontColorSecondary;
       }
-      .linkSkills:hover {
-        color: $fontColorPrimary;
+      @include tabletHorixzontalAndDesk {
+        .linkSkills:hover {
+          font-size: 2.54rem;
+          color: $fontColorPrimary;
+        }
       }
 
       .logoAdminConnect {

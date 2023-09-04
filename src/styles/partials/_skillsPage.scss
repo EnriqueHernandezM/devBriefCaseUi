@@ -11,13 +11,15 @@
     width: 20%;
     height: 11%;
     border-radius: 7px;
+    padding: 1px;
     @include mobileHorizontalAndTabletVertical {
       margin-top: 3rem;
+      padding: 2px;
     }
     @include tabletHorixzontalAndDesk {
       width: 10%;
       height: 22%;
-      padding: 2px;
+      padding: 3px;
     }
   }
 }
