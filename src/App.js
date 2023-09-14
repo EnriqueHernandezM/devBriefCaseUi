@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import SkillsPage from "./components/SkillsPage";
 import Home from "./components/Home";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 import { getLoginAdmin, loginAdmin } from "./api/adminApi";
 import SideBar from "./components/SideBar";
 import AdminPanel from "./components/AdminPanel";
@@ -27,7 +27,6 @@ function App() {
     event.preventDefault();
     loginAdmin(adminForm)
       .then((res) => setAdminGetData(res))
-      .then()
       .catch((err) => err);
   };
 

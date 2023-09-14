@@ -69,6 +69,15 @@ export default function UpdateOrDeleteProjects(allRecived) {
       const arrayImages = [];
       Object.keys(files).forEach((i) => {
         const file = files[i];
+        if (file.size > 1000000) {
+          toast.warn("Remember only 2mb for image!!", {
+            position: "top-center",
+            autoClose: 3000,
+            pauseOnHover: false,
+            theme: "dark",
+          });
+          return;
+        }
         let url = URL.createObjectURL(file);
         arrayImages.push({
           index: indexInicial,
@@ -100,7 +109,7 @@ export default function UpdateOrDeleteProjects(allRecived) {
           className="renderPrevWindowUpdateProject"
         >
           <label>
-            Change your images
+            Change your images up to 2mb
             <span className="buttonSelectFiles">Select Files </span>
             <input hidden type="file" multiple onChange={changeInputImagePut} />
           </label>

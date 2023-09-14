@@ -93,6 +93,15 @@ export default function PostNewProject() {
     const arrayImages = [];
     Object.keys(files).forEach((i) => {
       const file = files[i];
+      if (file.size > 1000000) {
+        toast.warn("Remember only 2mb for image!!", {
+          position: "top-center",
+          autoClose: 3000,
+          pauseOnHover: false,
+          theme: "dark",
+        });
+        return;
+      }
       let url = URL.createObjectURL(file);
       arrayImages.push({
         index: indexInicial,
@@ -147,7 +156,7 @@ export default function PostNewProject() {
         />
       </label>
       <label>
-        Add four images to your Project
+        Add four images to your Project up to 2mb by image
         <span className="buttonSelectFiles">Select Files </span>
         <input hidden type="file" multiple onChange={changeInputImage} />
       </label>

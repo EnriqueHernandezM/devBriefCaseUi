@@ -36,18 +36,24 @@ export default function SideBar() {
           <h4>About me</h4>
           <p>
             My name is Enrique Hernandez Montiel, I'm 24 years old Originally
-            from the State of Mexico. I have been training as a full stack
+            from the State of Mexico. I I have trained as a full stack
             programmer for 2 years. since I had a great interest in being able
-            to develop an app from from start to finish although I prefer to
-            focus more on the backend
+            to develop an app from start to finish although I prefer to focus
+            more on the backend
           </p>
           <h4>Experience and challenges</h4>
           <p>
-            Since I found my taste for programming I have worked 2 years in
-            personal projects, Since I found my taste for programming I have
-            worked 2 years in personal projects, Since I found my taste for
-            programming I have worked 2 years in personal projects,s
+            Since I found again my love for programming, I have worked on
+            personal projects, mainly in Node.js with express and nest.js
+            frameworks As for databases, I have focused on improving relational
+            ones, without leaving aside other very interesting like mongoDB and
+            Firestore. <br /> Happy to have gotten this far, improving more and
+            more in the way of learning, working and dealing with problems
           </p>
+          <h4>Contact me I think I can contribute to your team</h4>
+          <a className="mailToLink" href="mailto:enriquehmsb@gmail.com">
+            enriquehmsb@gmail.com{" "}
+          </a>
           <div className="containersTwoLogos">
             <div className="containerLogoGitHub">
               <a href="https://github.com/EnriqueHernandezM">

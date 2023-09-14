@@ -42,11 +42,21 @@
   }
   h4 {
     align-self: start;
-    padding: 0.15rem;
+    padding: 0.18rem;
   }
+
   p {
     animation: testAnim 1s ease;
     padding: 5px 10px 5px 10px;
+  }
+  .mailToLink {
+    font-size: 20px;
+    text-decoration: none;
+    padding: 0.4rem;
+    color: $fontColorDetails;
+  }
+  .mailToLink:hover {
+    color: aqua;
   }
   .containersTwoLogos {
     width: 90%;

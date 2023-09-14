@@ -16,9 +16,7 @@ async function getLoginAdmin() {
     if (!getAdmin.ok) {
       throw new Error("err in Api Admin");
     }
-
     const dataAdminOk = await getAdmin.json();
-    console.log(dataAdminOk);
     return dataAdminOk;
   } catch (err) {
     throw err;
@@ -29,9 +27,10 @@ async function loginAdmin(dataAdmin) {
   try {
     const loginAdmin = await fetch(
       "https://briefcase.fly.dev/api_briefcase/v1/login",
+
       {
-        credentials: "include",
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
