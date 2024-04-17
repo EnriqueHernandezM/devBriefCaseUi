@@ -29,6 +29,8 @@
     border-radius: 50%;
     object-fit: cover;
     margin: 1rem;
+    filter: contrast(1.1);
+    filter: saturate(1.2);
     @include mobileHorizontalAndTabletVertical {
       height: 12rem;
     }
@@ -56,7 +58,7 @@
     color: $fontColorDetails;
   }
   .mailToLink:hover {
-    color: aqua;
+    color: $fontColorPrimary;
   }
   .containersTwoLogos {
     width: 90%;

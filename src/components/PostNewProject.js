@@ -160,7 +160,7 @@ export default function PostNewProject() {
         <span className="buttonSelectFiles">Select Files </span>
         <input hidden type="file" multiple onChange={changeInputImage} />
       </label>
-      {/* PREVIEW IMAGES */}
+      {/* PREV IMAGES */}
       <div className="containerPreviewImages">
         {images.map((imagen) => (
           <div className="containerAimage" key={imagen.index}>

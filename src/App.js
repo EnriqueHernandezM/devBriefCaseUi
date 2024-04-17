@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import SkillsPage from "./components/SkillsPage";
 import Home from "./components/Home";
@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import { getLoginAdmin, loginAdmin } from "./api/adminApi";
 import SideBar from "./components/SideBar";
 import AdminPanel from "./components/AdminPanel";
+
 function App() {
   const [adminForm, setAdminForm] = React.useState({
     name: "",
@@ -23,6 +24,7 @@ function App() {
       };
     });
   };
+  //Aqui es donde tenemos que modificara para revisar las entradas qeuestan en formAdmin
   const submitFormLogin = (event) => {
     event.preventDefault();
     loginAdmin(adminForm)

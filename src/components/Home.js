@@ -1,6 +1,7 @@
 import React from "react";
 import { getAllProjectsToApi } from "../api/projectsApi";
 import CardForProject from "./CardForProject";
+import AddVim from "./AddViM";
 export default function Home() {
   const [allProjects, setAllProjects] = React.useState([]);
   React.useEffect(() => {

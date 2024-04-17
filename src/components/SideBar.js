@@ -1,6 +1,6 @@
 import React from "react";
 import { gsap } from "gsap";
-import imgProfile from "../icons/imgProfile.jpg";
+import imgProfile from "../icons/imgProfile.jpeg";
 export default function SideBar() {
   const [renderSideBar, setRenderSideBar] = React.useState(false);
   const [bbb, setBbb] = React.useState(false);
@@ -39,7 +39,7 @@ export default function SideBar() {
             from the State of Mexico. I I have trained as a full stack
             programmer for 2 years. since I had a great interest in being able
             to develop an app from start to finish although I prefer to focus
-            more on the backend
+            more on the backend.
           </p>
           <h4>Experience and challenges</h4>
           <p>
@@ -47,8 +47,12 @@ export default function SideBar() {
             personal projects, mainly in Node.js with express and nest.js
             frameworks As for databases, I have focused on improving relational
             ones, without leaving aside other very interesting like mongoDB and
-            Firestore. <br /> Happy to have gotten this far, improving more and
-            more in the way of learning, working and dealing with problems
+            Firestore. <br />
+            For the development of user interfaces I have worked with vanilla
+            js, template engines such as ejs, pug and handleblars. This project
+            is the result of my most current learning, which is React.
+            <br /> Happy to have gotten this far, improving more and more in the
+            way of learning, working and dealing with problems
           </p>
           <h4>Contact me I think I can contribute to your team</h4>
           <a className="mailToLink" href="mailto:enriquehmsb@gmail.com">

@@ -15,7 +15,11 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: start;
+    width: 96.5%;
+    margin: auto;
+    margin-top: 18px;
   }
+
   .carouselImgs {
     position: relative;
     width: 99%;
@@ -113,11 +117,11 @@
       padding: 0.25rem 0rem 0.5rem 0rem;
       @include mobileHorizontalAndTabletVertical {
         padding: 0.25rem 0rem 0.75rem 0rem;
-        font-size: 3.75rem;
+        font-size: 3.1rem;
       }
       @include tabletHorixzontalAndDesk {
         padding: 0.25rem 0rem 1rem 0rem;
-        font-size: 3rem;
+        font-size: 2.85rem;
       }
     }
     p {
@@ -152,7 +156,7 @@
       }
       @include tabletHorixzontalAndDesk {
         padding: 0.4rem;
-        font-size: 2.25rem;
+        font-size: 2.15rem;
       }
     }
     span::before {

@@ -1,0 +1,32 @@
+#addEmergency {
+  width: 35%;
+  color: white;
+  margin-left: 60%;
+  margin-top: -3%;
+  border: 1px solid red;
+  text-align: center;
+  background-color: rgba(0, 255, 255, 0.126);
+  border-radius: 10px;
+  p {
+    padding: 5px;
+    font-size: 0.85rem;
+    @include mobileHorizontalAndTabletVertical {
+      font-size: 1.25rem;
+    }
+  }
+  h3 {
+    padding: 3px;
+    font-size: 1.15rem;
+    @include mobileHorizontalAndTabletVertical {
+      font-size: 1.25rem;
+    }
+  }
+  a {
+    .logoGitHubAdd {
+      width: 45%;
+      @include mobileHorizontalAndTabletVertical {
+        width: 15%;
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 async function getLoginAdmin() {
   try {
     const getAdmin = await fetch(
-      "https://briefcase.fly.dev/api_briefcase/v1/login",
+      "http://localhost:8082/api_briefcase/v1/login",
       {
         method: "GET",
         credentials: "include",
@@ -26,7 +26,7 @@ async function getLoginAdmin() {
 async function loginAdmin(dataAdmin) {
   try {
     const loginAdmin = await fetch(
-      "https://briefcase.fly.dev/api_briefcase/v1/login",
+      "http://localhost:8082/api_briefcase/v1/login",
 
       {
         method: "POST",
@@ -46,7 +46,7 @@ async function loginAdmin(dataAdmin) {
 async function logOutAdmin() {
   try {
     const closeSession = await fetch(
-      "https://briefcase.fly.dev/api_briefcase/v1/logOut",
+      "http://localhost:8082/api_briefcase/v1/logOut",
       {
         method: "GET",
         credentials: "include",

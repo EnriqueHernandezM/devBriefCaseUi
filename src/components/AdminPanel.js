@@ -33,7 +33,7 @@ export default function AdminPanel({ session }) {
           );
         }
         if (res.msge === true) {
-          window.location = "/admin_panel";
+          window.location = "/devBriefCaseUi/admin_panel";
         }
       })
       .catch((err) => err);
@@ -71,14 +71,14 @@ export default function AdminPanel({ session }) {
           );
         }
         if (res.modified === true) {
-          window.location = "/admin_panel";
+          window.location = "/devBriefCaseUi/admin_panel";
         }
       })
       .catch((err) => err);
   };
   const logOutSession = () => {
     logOutAdmin()
-      .then((window.location = "/"))
+      .then((window.location = "/devBriefCaseUi"))
       .catch((err) => console.log(err));
   };
 
