@@ -1,6 +1,6 @@
 # Project briefcase
 
-##Índice
+## INDEX
 
 \*[Description](#Description)
 
