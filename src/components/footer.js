@@ -1,26 +1,28 @@
 import React from "react";
+import githubLogo from "../icons/githubLogo.svg";
 
 export default function Footer() {
   return (
     <footer className="footerContain">
-      <div className="visitTheCode">
-        <h5>Look at the code</h5>
-        <a href="https://github.com/EnriqueHernandezM/devBriefCaseUi">
+      <div className="footerInner">
+        <a
+          className="visitTheCode"
+          href="https://github.com/EnriqueHernandezM/devBriefCaseUi"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span>Look at the code</span>
           <img
-            src="https://qph.cf2.quoracdn.net/main-qimg-729a22aba98d1235fdce4883accaf81e"
-            alt="Logo Github"
+            src={githubLogo}
+            alt="GitHub repository"
             className="imgGitHubFooter"
           />
         </a>
-      </div>
-      <div className="otherInf">
-        <h5> Other nfo</h5>
-        <p>other</p>
-      </div>
-      <div className="infStaf">
-        <h5>developed by</h5>
-        <p>Enrique Hernandez Montiel</p>
-        <p>Mexico</p>
+
+        <div className="infStaf">
+          <span>developed by</span>
+          <p>Enrique Hernández Montiel · Mexico</p>
+        </div>
       </div>
     </footer>
   );

@@ -1,20 +1,24 @@
 import React from "react";
+
 export default function FormLoginAdmin({
   changesOnFormLogin,
   adminForm,
   submitFormLogin,
   setRenderFormLogin,
+  copy,
 }) {
   return (
     <div className="formLoginAdmin">
-      <h4>Credentials</h4>
-      <span onClick={() => setRenderFormLogin((prev) => !prev)}> ❌</span>
-      <form
-        onSubmit={(event) => {
-          submitFormLogin(event);
-          setRenderFormLogin((prev) => !prev);
-        }}
+      <h4>{copy.loginTitle}</h4>
+      <button
+        type="button"
+        className="closeLoginAdmin"
+        onClick={() => setRenderFormLogin((prev) => !prev)}
+        aria-label={copy.close}
       >
+        x
+      </button>
+      <form onSubmit={submitFormLogin}>
         <label>
           <input
             onChange={changesOnFormLogin}
@@ -34,7 +38,7 @@ export default function FormLoginAdmin({
           />
         </label>
 
-        <button>Log In</button>
+        <button>{copy.signIn}</button>
       </form>
     </div>
   );

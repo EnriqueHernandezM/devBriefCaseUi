@@ -2,3 +2,7 @@ body {
   background-color: $colorPrimary;
   font-family: $font;
 }
+
+body.sideBarIsOpen {
+  overflow: hidden;
+}

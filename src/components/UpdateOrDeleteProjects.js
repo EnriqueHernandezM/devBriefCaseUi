@@ -1,5 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
+import { normalizeProjectValues } from "../functions/projectFormData";
+
 export default function UpdateOrDeleteProjects(allRecived) {
   const [renderPrevViewUpdate, setRenderPrevViewUpdate] = React.useState({
     render: false,
@@ -7,31 +9,25 @@ export default function UpdateOrDeleteProjects(allRecived) {
   });
   const [imagesPreview, setimagesPreview] = React.useState([]);
   const [imagesFilesPut, setImagesFilesPut] = React.useState([]);
-  const RenderPrevUpdateProject = () => {
-    const cathcItemToModified = allRecived.arrProjects.filter(
-      (el) => el.id === renderPrevViewUpdate.idToModief
-    );
 
-    const [newBodyProject, setNewBodyProject] = React.useState({});
+  const RenderPrevUpdateProject = () => {
+    const cathcItemToModified = allRecived.arrProjects.filter((el) => el.id === renderPrevViewUpdate.idToModief);
+
+    const [newBodyProject, setNewBodyProject] = React.useState(normalizeProjectValues());
 
     React.useEffect(() => {
       for (const el of cathcItemToModified) {
-        setNewBodyProject({
-          nameProject: el.nameProject,
-          tagsProject: el.tagsProject,
-          description: el.description,
-          urlProject: el.urlProject,
-        });
+        setNewBodyProject(normalizeProjectValues(el));
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const changeUpdateInputs = (event) => {
       setNewBodyProject((prevValues) => {
-        const { name, value } = event.target;
+        const { name, type, checked, value } = event.target;
         return {
           ...prevValues,
-          [name]: value,
+          [name]: type === "checkbox" ? checked : value,
         };
       });
     };
@@ -52,7 +48,7 @@ export default function UpdateOrDeleteProjects(allRecived) {
           theme: "dark",
         });
         return;
-      } else if (newImgsState.length < 2) {
+      } else if (newImgsState.length === 1) {
         toast.warn("add one more image", {
           position: "top-center",
           autoClose: 3000,
@@ -96,87 +92,113 @@ export default function UpdateOrDeleteProjects(allRecived) {
       setimagesPreview(newImgs);
     }
     for (const el of cathcItemToModified) {
+      const currentImages = Array.isArray(el.imagesProject) ? el.imagesProject : [];
       return (
-        <form
-          onSubmit={(event) =>
-            allRecived.updateAproject(
-              event,
-              el.id,
-              newBodyProject,
-              imagesFilesPut
-            )
-          }
-          className="renderPrevWindowUpdateProject"
-        >
-          <label>
-            Change your images up to 2mb
-            <span className="buttonSelectFiles">Select Files </span>
-            <input hidden type="file" multiple onChange={changeInputImagePut} />
-          </label>
+        <form onSubmit={(event) => allRecived.updateAproject(event, el.id, newBodyProject, imagesFilesPut)} className="renderPrevWindowUpdateProject">
+          <fieldset className="projectFormSection" disabled={allRecived.isReadOnlyPreview}>
+            <legend>Informacion principal</legend>
+            <label>
+              Change name of project
+              <input name="nameProject" type="text" placeholder={el.nameProject || ""} value={newBodyProject.nameProject} onChange={changeUpdateInputs} required={true} />
+            </label>
+            <label>
+              Summary
+              <textarea name="summary" placeholder={el.summary || ""} value={newBodyProject.summary} onChange={changeUpdateInputs} />
+            </label>
+            <label>
+              Description
+              <textarea name="description" placeholder={el.description || ""} value={newBodyProject.description} onChange={changeUpdateInputs} />
+            </label>
+            <label>
+              Project type
+              <select name="projectType" value={newBodyProject.projectType} onChange={changeUpdateInputs}>
+                <option value="">Select a type</option>
+                <option value="personal">personal</option>
+                <option value="client">client</option>
+                <option value="professional">professional</option>
+              </select>
+            </label>
+            <label>
+              Role
+              <input name="role" type="text" placeholder={el.role || ""} value={newBodyProject.role} onChange={changeUpdateInputs} />
+            </label>
+          </fieldset>
 
-          <div className="containerPreviewImages">
-            {imagesPreview.map((imagen) => (
-              <div className="containerAimage" key={imagen.index}>
-                <button
-                  className=""
-                  onClick={deleteImgPut.bind("this", imagen.index)}
-                >
-                  x
-                </button>
-                <img
-                  alt="your img"
-                  src={imagen.url}
-                  data-toggle="modal"
-                  data-target="#ModalPreViewImg"
-                  className="img-responsive"
-                ></img>
-              </div>
-            ))}
-          </div>
-          <label>
-            Change name of project
-            <input
-              name="nameProject"
-              type="text"
-              placeholder={el.nameProject}
-              value={newBodyProject.nameProject}
-              onChange={changeUpdateInputs}
-              required={true}
-            />
-          </label>
-          <label>
-            Change tags <b>Remember that they are separated by commas. </b>
-            <input
-              name="tagsProject"
-              type="text"
-              placeholder={el.tagsProject}
-              value={newBodyProject.tagsProject}
-              onChange={changeUpdateInputs}
-              required={true}
-            />
-          </label>
-          <label>
-            Change Your description
-            <input
-              name="description"
-              type="text"
-              placeholder={el.description}
-              value={newBodyProject.description}
-              onChange={changeUpdateInputs}
-              required={true}
-            />
-          </label>
-          <label>
-            Change the url
-            <input
-              name="urlProject"
-              type="tex"
-              placeholder={el.urlProject}
-              value={newBodyProject.urlProject}
-              onChange={changeUpdateInputs}
-              required={true}
-            />
-          </label>
+          <fieldset className="projectFormSection" disabled={allRecived.isReadOnlyPreview}>
+            <legend>Caso tecnico</legend>
+            <label>
+              Problem
+              <textarea name="problem" placeholder={el.problem || ""} value={newBodyProject.problem} onChange={changeUpdateInputs} />
+            </label>
+            <label>
+              Responsibilities
+              <textarea name="responsibilities" placeholder={el.responsibilities || ""} value={newBodyProject.responsibilities} onChange={changeUpdateInputs} />
+            </label>
+            <label>
+              Technical decisions
+              <textarea name="technicalDecisions" placeholder={el.technicalDecisions || ""} value={newBodyProject.technicalDecisions} onChange={changeUpdateInputs} />
+            </label>
+            <label>
+              Architecture
+              <textarea name="architecture" placeholder={el.architecture || ""} value={newBodyProject.architecture} onChange={changeUpdateInputs} />
+            </label>
+            <label>
+              Results
+              <textarea name="results" placeholder={el.results || ""} value={newBodyProject.results} onChange={changeUpdateInputs} />
+            </label>
+          </fieldset>
+
+          <fieldset className="projectFormSection" disabled={allRecived.isReadOnlyPreview}>
+            <legend>Presentacion y enlaces</legend>
+            <label>
+              Change the url
+              <input name="urlProject" type="text" placeholder={el.urlProject || ""} value={newBodyProject.urlProject} onChange={changeUpdateInputs} />
+            </label>
+            <label>
+              Repository URL
+              <input name="repositoryUrl" type="text" placeholder={el.repositoryUrl || ""} value={newBodyProject.repositoryUrl} onChange={changeUpdateInputs} />
+            </label>
+            <label className="checkboxLabel">
+              Featured
+              <input name="featured" type="checkbox" checked={newBodyProject.featured} onChange={changeUpdateInputs} />
+            </label>
+            <label>
+              Display order
+              <input name="displayOrder" type="number" placeholder="Optional" value={newBodyProject.displayOrder} onChange={changeUpdateInputs} />
+            </label>
+          </fieldset>
+
+          <fieldset className="projectFormSection" disabled={allRecived.isReadOnlyPreview}>
+            <legend>Contenido actual</legend>
+            <label>
+              Change tags <b>Remember that they are separated by commas. </b>
+              <input name="tagsProject" type="text" placeholder={newBodyProject.tagsProject} value={newBodyProject.tagsProject} onChange={changeUpdateInputs} />
+            </label>
+            <div className="containerPreviewImages">
+              {currentImages.map((image) => (
+                <div className="containerAimage" key={image}>
+                  <img alt={el.nameProject || "project"} src={image} className="img-responsive"></img>
+                </div>
+              ))}
+            </div>
+            <label>
+              Change your images up to 2mb
+              <span className="buttonSelectFiles">Select Files </span>
+              <input hidden type="file" multiple onChange={changeInputImagePut} />
+            </label>
+
+            <div className="containerPreviewImages">
+              {imagesPreview.map((imagen) => (
+                <div className="containerAimage" key={imagen.index}>
+                  <button type="button" className="" onClick={deleteImgPut.bind("this", imagen.index)}>
+                    x
+                  </button>
+                  <img alt="your img" src={imagen.url} data-toggle="modal" data-target="#ModalPreViewImg" className="img-responsive"></img>
+                </div>
+              ))}
+            </div>
+          </fieldset>
+
           <input
             onClick={() =>
               setRenderPrevViewUpdate((prev) => ({
@@ -188,7 +210,7 @@ export default function UpdateOrDeleteProjects(allRecived) {
             type="button"
             value="cancel"
           />
-          <button> Update Project</button>
+          <button disabled={allRecived.isReadOnlyPreview}> Update Project</button>
         </form>
       );
     }
@@ -201,31 +223,35 @@ export default function UpdateOrDeleteProjects(allRecived) {
           <b> Name project:</b> {el.nameProject}
         </h3>
         <p>
-          <b>Description:</b> {el.description}
+          <b>Summary:</b> {el.summary || el.description || ""}
         </p>
-        <span
-          onClick={() =>
+        <button
+          type="button"
+          className="projectAdminListAction"
+          disabled={allRecived.isReadOnlyPreview}
+          onClick={() => {
+            if (allRecived.isReadOnlyPreview) {
+              return;
+            }
             setRenderPrevViewUpdate((prev) => ({
               render: !prev.render,
               idToModief: el.id,
-            }))
-          }
+            }));
+          }}
         >
-          🔃
-        </span>
-        <span onClick={() => allRecived.deleteAproject(el.id)}> 🗑️</span>
+          update
+        </button>
+        <button type="button" className="projectAdminListAction" disabled={allRecived.isReadOnlyPreview} onClick={() => allRecived.deleteAproject(el.id)}>
+          delete
+        </button>
       </div>
     );
   });
 
   return (
     <div className="containerElementsToUpdateOrDelete">
-      <h2>Delete or modify your projects</h2>
-      {renderPrevViewUpdate.render ? (
-        <RenderPrevUpdateProject />
-      ) : (
-        renderPreView
-      )}
+      <h2> Manage your projects </h2>
+      {renderPrevViewUpdate.render ? <RenderPrevUpdateProject /> : renderPreView}
     </div>
   );
 }

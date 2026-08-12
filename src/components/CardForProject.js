@@ -6,18 +6,31 @@ import iconChevronRight from "../icons/next.png";
 export default function CardForProject({
   nameProject,
   tagsProject,
+  projectType,
+  role,
+  summary,
   description,
   imagesProject,
   urlProject,
-  id,
 }) {
   const fileOfImages = getCarousel(imagesProject);
   const [positionStatus, setPositionStatus] = React.useState(0);
   const [renderImgs, setRenderImgs] = React.useState(
     fileOfImages[positionStatus]
   );
+  const hasMultipleImages = fileOfImages.length > 1;
+
+  const projectTypeLabels = {
+    client: "Client project",
+    professional: "Professional project",
+    personal: "Personal project",
+  };
+
   const nextImg = () => {
     const large = fileOfImages.length;
+    if (large === 0) {
+      return;
+    }
     setPositionStatus((prev) => {
       if (prev === large - 1) {
         return 0;
@@ -28,6 +41,9 @@ export default function CardForProject({
 
   const prevImg = () => {
     const large = fileOfImages.length;
+    if (large === 0) {
+      return;
+    }
     setPositionStatus((prev) => {
       if (prev === 0) {
         return large - 1;
@@ -38,27 +54,50 @@ export default function CardForProject({
   React.useEffect(() => {
     setRenderImgs(fileOfImages[positionStatus]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [positionStatus]);
-  const generateTags = tagsProject.map((el) => <span key={el}> {el}</span>);
+  }, [positionStatus, imagesProject]);
+  const safeTags = Array.isArray(tagsProject) ? tagsProject : [];
+  const generateTags = safeTags.map((el) => <span key={el}>{el}</span>);
+  const indicators = fileOfImages.map((el, index) => (
+    <button
+      type="button"
+      key={el.key || index}
+      className={index === positionStatus ? "activeIndicator" : ""}
+      onClick={() => setPositionStatus(index)}
+      aria-label={`Show project image ${index + 1}`}
+    />
+  ));
+  const textProject = summary || description || "";
+  const projectMeta = [projectTypeLabels[projectType] || projectType, role]
+    .filter(Boolean)
+    .join(" \u00b7 ");
+
   return (
     <div className="containerCardOneProject">
       <div className="carouselImgs">
         {renderImgs}
-        <div className="buttonsCarousel">
-          <span onClick={prevImg} className="chevronLeft">
-            <img src={iconChevronLeft} alt="icon left" />
-          </span>
-          <span onClick={nextImg} className="chevronRight">
-            <img src={iconChevronRight} alt="icon right" />
-          </span>
-        </div>
+        {hasMultipleImages && (
+          <>
+            <div className="buttonsCarousel">
+              <button type="button" onClick={prevImg} className="chevronLeft">
+                <img src={iconChevronLeft} alt="Previous project" />
+              </button>
+              <button type="button" onClick={nextImg} className="chevronRight">
+                <img src={iconChevronRight} alt="Next project" />
+              </button>
+            </div>
+            <div className="carouselIndicators">{indicators}</div>
+          </>
+        )}
       </div>
 
       <div className="textsCard">
+        {projectMeta && <p className="projectMeta">{projectMeta}</p>}
         <h1>{nameProject} </h1>
-        <p>{description}</p>
-        {generateTags}
-        <a href={urlProject}> Visit </a>
+        <p className="projectSummary">{textProject}</p>
+        <div className="projectTags">{generateTags}</div>
+        <a className="projectCardCta" href={urlProject || "#"}>
+          View case study {"\u2192"}
+        </a>
       </div>
     </div>
   );

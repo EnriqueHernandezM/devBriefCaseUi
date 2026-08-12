@@ -1,239 +1,303 @@
+.sideBarOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  border: 0;
+  background: rgba(2, 0, 51, 0.58);
+  cursor: pointer;
+}
+
 .sideBar {
-  position: absolute;
-  width: 75%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 94vw;
+  max-width: 30rem;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   background-color: $colorTertiary;
   color: $fontColorPrimary;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.15rem 0.5rem 0.5rem 0.5rem;
+  padding: 1.1rem 1rem 1.35rem 1rem;
   z-index: 4;
   font-size: $fontSizeMobileSideBar;
-  animation-name: renderSideBar;
-  animation-duration: 1.2s;
-  animation-timing-function: ease;
   box-shadow: 0.25rem 0.15rem 1.75rem 0.1rem rgb(0, 0, 0);
-  border-radius: 1px 10px 10px 1px;
+  border-right: 1px solid rgba(189, 242, 226, 0.18);
+  border-radius: 0px 10px 10px 0px;
+
   @include mobileHorizontalAndTabletVertical {
-    width: 60%;
+    width: 90vw;
+    padding: 1.35rem 1.4rem 1.75rem 1.4rem;
     font-size: $fontSizeTabletSideBar;
   }
 
   @include tabletHorixzontalAndDesk {
-    width: 30%;
+    width: min(480px, 90vw);
     font-size: $fontSizeDesktopSideBar;
   }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.sideBarClose {
+  position: sticky;
+  top: 0rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.65rem;
+  height: 2.65rem;
+  margin-left: auto;
+  border: 1px solid rgba(189, 242, 226, 0.2);
+  border-radius: 8px;
+  background: $colorSecondary;
+  color: $fontColorSecondary;
+  cursor: pointer;
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease,
+    transform 180ms ease;
+
+  &:hover,
+  &:focus {
+    color: $fontColorPrimary;
+    border-color: rgba(189, 242, 226, 0.42);
+    background: rgba(189, 242, 226, 0.08);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $fontColorDetails;
+    outline-offset: 0.2rem;
+  }
+}
+
+.profileDrawerHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.2rem 0rem 1rem 0rem;
+  border-bottom: 1px solid rgba(189, 242, 226, 0.14);
+
   .imgProgfile {
-    width: 40%;
-    height: 6.5rem;
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%;
     object-fit: cover;
-    margin: 1rem;
-    filter: contrast(1.1);
-    filter: saturate(1.2);
+    margin: 0rem 0rem 0.8rem 0rem;
+    filter: saturate(1.1) contrast(1.05);
+
     @include mobileHorizontalAndTabletVertical {
-      height: 12rem;
+      width: 9rem;
+      height: 9rem;
     }
+
     @include tabletHorixzontalAndDesk {
-      height: 11rem;
+      width: 8rem;
+      height: 8rem;
     }
   }
+
   h3 {
-    padding: 0.15rem;
-    margin-bottom: 4px;
+    max-width: 24rem;
+    padding: 0rem;
+    margin: 0rem;
+    line-height: 1.3;
+    text-align: center;
+    font-size: 1.05rem;
+
+    @include mobileHorizontalAndTabletVertical {
+      font-size: 1.5rem;
+    }
+
+    @include tabletHorixzontalAndDesk {
+      font-size: 1.15rem;
+    }
   }
+}
+
+.profileDrawerSection {
+  padding: 1rem 0rem 0rem 0rem;
+
   h4 {
-    align-self: start;
-    padding: 0.18rem;
+    display: inline-block;
+    padding: 0rem 0rem 0.35rem 0rem;
+    margin: 0rem 0rem 0.65rem 0rem;
+    border-bottom: 1px solid rgba(189, 242, 226, 0.58);
+    color: $fontColorDetails;
+    font-weight: 700;
+    line-height: 1.25;
   }
 
   p {
-    animation: testAnim 1s ease;
-    padding: 5px 10px 5px 10px;
+    padding: 0rem;
+    margin: 0rem 0rem 0.75rem 0rem;
+    line-height: 1.65;
+    color: $fontColorSecondary;
   }
+}
+
+.profileDrawerClosing {
+  margin: 1rem 0rem 0rem 0rem;
+  padding: 0.85rem 0rem 0rem 0rem;
+  border-top: 1px solid rgba(189, 242, 226, 0.14);
+  color: rgba(196, 210, 238, 0.86);
+  line-height: 1.65;
+}
+
+.profileContactSection {
   .mailToLink {
-    font-size: 20px;
-    text-decoration: none;
-    padding: 0.4rem;
-    color: $fontColorDetails;
-  }
-  .mailToLink:hover {
-    color: $fontColorPrimary;
-  }
-  .containersTwoLogos {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: inline-flex;
     align-items: center;
-    animation: testAnim 1.8s ease-in;
-    .containerLogoGitHub > a {
-      .logoGitHub {
-        margin: 5px;
-        width: 60px;
-        @include mobileHorizontalAndTabletVertical {
-          width: 90px;
-        }
-      }
+    min-height: 2.6rem;
+    max-width: 100%;
+    text-decoration: none;
+    color: $fontColorDetails;
+    overflow-wrap: anywhere;
+    transition: color 180ms ease, transform 180ms ease;
+
+    @include mobileHorizontalAndTabletVertical {
+      font-size: 1.35rem;
     }
-    .containerLogoLinke > a {
-      .logoLinke {
-        margin: 5px;
-        width: 45px;
-        @include mobileHorizontalAndTabletVertical {
-          width: 60px;
-        }
-      }
+
+    @include tabletHorixzontalAndDesk {
+      font-size: 1rem;
+    }
+
+    &:hover,
+    &:focus {
+      color: $fontColorPrimary;
+      transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $fontColorDetails;
+      outline-offset: 0.25rem;
+      border-radius: 4px;
     }
   }
 }
-#buttonSideBar {
-  width: 3.3rem;
-  height: 3rem;
-  appearance: none;
-  background-color: $colorTertiary;
-  border-radius: 1px 10px 15px 1px;
-  position: absolute;
-  margin-top: 0.75rem;
-  cursor: pointer;
-  box-shadow: 0rem 0.1rem 0.35rem 0.05rem;
-  animation: prescense 2s ease;
-  @include mobileHorizontalAndTabletVertical {
-    width: 6.5rem;
-    height: 4rem;
-  }
-  @include tabletHorixzontalAndDesk {
-    width: 6.75rem;
-    height: 4rem;
-  }
-}
-#buttonSideBar:checked {
-  box-shadow: 0.3rem 0.1rem 0.15rem 0.05rem;
-  border-radius: 1px 15px 15px 1px;
-  left: 75%;
-  animation: buttonMove 1.2s ease;
-  mix-blend-mode: difference;
-  @include mobileHorizontalAndTabletVertical {
-    left: 60%;
-  }
-  @include tabletHorixzontalAndDesk {
-    width: 4rem;
-    left: 30%;
-  }
-}
-#buttonSideBar:checked::after {
-  content: "🢀";
-  font-size: 1.25rem;
-  margin-left: 5px;
-  top: 10px;
-  @include mobileHorizontalAndTabletVertical {
-    font-size: 2.5rem;
-    left: 22px;
-    top: 5px;
-  }
-  @include tabletHorixzontalAndDesk {
-    left: 5px;
-    top: 3px;
-  }
-}
-#buttonSideBar::after {
-  content: "know me";
-  font-size: 1rem;
-  position: absolute;
-  left: 10px;
-  top: 5px;
-  color: $fontColorDetails;
-  animation-name: inherit;
-  @include mobileHorizontalAndTabletVertical {
-    font-size: 1.3rem;
-    left: 11px;
-    top: 20px;
-  }
-  @include tabletHorixzontalAndDesk {
-    font-size: 1.35rem;
-    left: 11px;
-    top: 20px;
+
+.containersTwoLogos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+  padding-top: 0.1rem;
+
+  .socialLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid rgba(189, 242, 226, 0.18);
+    border-radius: 8px;
+    color: $fontColorSecondary;
+    text-decoration: none;
+    transition: transform 180ms ease, background 180ms ease,
+      border-color 180ms ease, color 180ms ease;
+
+    img {
+      width: 1.35rem;
+      height: 1.35rem;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .socialTextIcon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.35rem;
+      height: 1.35rem;
+      border-radius: 4px;
+      background: $fontColorPrimary;
+      color: $colorPrimary;
+      font-size: 0.58rem;
+      font-weight: 700;
+    }
+
+    &:hover,
+    &:focus {
+      color: $fontColorPrimary;
+      transform: translateY(-2px);
+      border-color: rgba(189, 242, 226, 0.42);
+      background: rgba(189, 242, 226, 0.07);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $fontColorDetails;
+      outline-offset: 0.2rem;
+    }
   }
 }
-#buttonSideBar:hover::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 5px;
+
+.buttonSideBar {
+  position: fixed;
+  top: 4.85rem;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    45deg,
-    rgb(40, 232, 203),
-    blue,
-    black,
-    blue,
-    rgb(129, 58, 250),
-    blue,
-    black
-  );
-  background-size: 400%;
-  border-radius: 10px;
-  filter: blur(5px);
-  animation: glow 20s linear infinite;
-}
+  z-index: 5;
+  min-width: 3.8rem;
+  min-height: 3rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid rgba(189, 242, 226, 0.16);
+  border-left: 0;
+  border-radius: 0px 10px 15px 0px;
+  background-color: $colorTertiary;
+  color: $fontColorDetails;
+  cursor: pointer;
+  box-shadow: 0rem 0.1rem 0.35rem 0.05rem rgba(0, 0, 0, 0.45);
+  transition: transform 220ms ease, background 180ms ease, border-color 180ms ease,
+    color 180ms ease;
 
-@keyframes renderSideBar {
-  0% {
-    width: 0%;
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.1;
-  }
-  100% {
-  }
-}
-@keyframes prescense {
-  0% {
-    left: -1rem;
-  }
-  25% {
-    transform: scale(1.2);
-  }
-  50% {
-    left: -0rem;
-    transform: scale(1);
-    transform: scaleX(1.2);
-  }
-  75% {
-    transform: scale(1.2);
-  }
-  100% {
-  }
-}
-@keyframes buttonMove {
-  0% {
-    left: 0%;
+  @include mobileHorizontalAndTabletVertical {
+    top: 6.3rem;
+    min-width: 6.5rem;
+    min-height: 4rem;
+    font-size: 1.25rem;
   }
 
-  100% {
+  @include tabletHorixzontalAndDesk {
+    top: 6.15rem;
+    min-width: 6.75rem;
+    min-height: 4rem;
+    font-size: 1.25rem;
+  }
+
+  span {
+    display: block;
+    line-height: 1;
+  }
+
+  &:hover,
+  &:focus {
+    color: $fontColorPrimary;
+    border-color: rgba(189, 242, 226, 0.35);
+    background: rgba(0, 3, 69, 0.98);
+    transform: translateX(0.2rem);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $fontColorDetails;
+    outline-offset: 0.25rem;
   }
 }
-@keyframes testAnim {
-  0% {
-    display: none;
-  }
-  25% {
-    display: none;
-  }
-  50% {
-    display: none;
-    opacity: 0.2;
-  }
-  75% {
-    opacity: 0.5;
-  }
-  100% {
-  }
+
+.buttonSideBar.isOpen {
+  opacity: 0;
+  pointer-events: none;
 }
-#containerAllSideBar {
-  display: none;
+
+@media (prefers-reduced-motion: reduce) {
+  .sideBarClose,
+  .mailToLink,
+  .socialLink,
+  .buttonSideBar {
+    transition: none;
+  }
 }

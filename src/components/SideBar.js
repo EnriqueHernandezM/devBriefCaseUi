@@ -1,93 +1,167 @@
 import React from "react";
 import { gsap } from "gsap";
 import imgProfile from "../icons/imgProfile.jpeg";
-export default function SideBar() {
+import linkedinLogo from "../icons/linkedinLogo.svg";
+import {
+  knowMeCopy,
+  profileContact,
+  socialLinks,
+} from "../data/profileData";
+
+const socialIcons = {
+  github: (
+    <span className="socialTextIcon" aria-hidden="true">
+      GH
+    </span>
+  ),
+  linkedin: <img src={linkedinLogo} alt="" aria-hidden="true" />,
+};
+
+export default function SideBar({ language = "en" }) {
   const [renderSideBar, setRenderSideBar] = React.useState(false);
-  const [bbb, setBbb] = React.useState(false);
-  gsap.registerEffect({
-    name: "fadeBar",
-    effect: (targets, config) => {
-      return gsap.to(targets, {
-        duration: 0.9,
-        left: "-75%",
+  const [isClosing, setIsClosing] = React.useState(false);
+  const sideBarRef = React.useRef(null);
+  const copy = knowMeCopy[language] ?? knowMeCopy.en;
 
-        display: "none",
-      });
-    },
-    extendTimeline: true,
-  });
-
-  const watchSideBar = async (event) => {
-    const { checked } = event.target;
-
-    if (checked === false) {
-      setBbb(true);
-      await gsap.effects.fadeBar(".sideBar");
-      setBbb(false);
-    }
-    setRenderSideBar((prev) => !prev);
+  const openSideBar = () => {
+    setRenderSideBar(true);
+    setIsClosing(false);
   };
+
+  const closeSideBar = React.useCallback(() => {
+    if (!renderSideBar || isClosing) {
+      return;
+    }
+
+    setIsClosing(true);
+    gsap.to(sideBarRef.current, {
+      x: "-105%",
+      opacity: 0,
+      duration: 0.28,
+      ease: "power2.inOut",
+      onComplete: () => {
+        setRenderSideBar(false);
+        setIsClosing(false);
+      },
+    });
+  }, [isClosing, renderSideBar]);
+
+  const openOrFocusSideBar = () => {
+    if (renderSideBar) {
+      sideBarRef.current?.focus();
+      return;
+    }
+    openSideBar();
+  };
+
+  React.useEffect(() => {
+    if (!renderSideBar || isClosing) {
+      return;
+    }
+
+    gsap.fromTo(
+      sideBarRef.current,
+      { x: "-105%", opacity: 0.75 },
+      { x: "0%", opacity: 1, duration: 0.32, ease: "power2.out" }
+    );
+  }, [isClosing, renderSideBar]);
+
+  React.useEffect(() => {
+    if (!renderSideBar) {
+      return;
+    }
+
+    const closeWithEscape = (event) => {
+      if (event.key === "Escape") {
+        closeSideBar();
+      }
+    };
+
+    document.body.classList.add("sideBarIsOpen");
+    window.addEventListener("keydown", closeWithEscape);
+
+    return () => {
+      document.body.classList.remove("sideBarIsOpen");
+      window.removeEventListener("keydown", closeWithEscape);
+    };
+  }, [closeSideBar, renderSideBar]);
+
+  const renderProfileSections = copy.sections.map((section) => (
+    <section className="profileDrawerSection" key={section.id}>
+      <h4>{section.title}</h4>
+      {section.content.split("\n").map((text) => (
+        <p key={text}>{text}</p>
+      ))}
+    </section>
+  ));
+
+  const renderSocialLinks = socialLinks.map((link) => (
+    <a key={link.id} href={link.href} className="socialLink">
+      {socialIcons[link.icon]}
+      <span>{link.label}</span>
+    </a>
+  ));
+
   return (
     <>
       {renderSideBar && (
-        <div className="sideBar">
-          <img className="imgProgfile" src={imgProfile} alt="img Profile" />
-          <h3>Hello welcome to my projects page</h3>
-          <h4>About me</h4>
-          <p>
-            My name is Enrique Hernandez Montiel, I'm 24 years old Originally
-            from the State of Mexico. I I have trained as a full stack
-            programmer for 2 years. since I had a great interest in being able
-            to develop an app from start to finish although I prefer to focus
-            more on the backend.
-          </p>
-          <h4>Experience and challenges</h4>
-          <p>
-            Since I found again my love for programming, I have worked on
-            personal projects, mainly in Node.js with express and nest.js
-            frameworks As for databases, I have focused on improving relational
-            ones, without leaving aside other very interesting like mongoDB and
-            Firestore. <br />
-            For the development of user interfaces I have worked with vanilla
-            js, template engines such as ejs, pug and handleblars. This project
-            is the result of my most current learning, which is React.
-            <br /> Happy to have gotten this far, improving more and more in the
-            way of learning, working and dealing with problems
-          </p>
-          <h4>Contact me I think I can contribute to your team</h4>
-          <a className="mailToLink" href="mailto:enriquehmsb@gmail.com">
-            enriquehmsb@gmail.com{" "}
-          </a>
-          <div className="containersTwoLogos">
-            <div className="containerLogoGitHub">
-              <a href="https://github.com/EnriqueHernandezM">
-                <img
-                  className="logoGitHub"
-                  src="https://qph.cf2.quoracdn.net/main-qimg-729a22aba98d1235fdce4883accaf81e"
-                  alt="logo GitHub"
-                />
+        <>
+          <button
+            type="button"
+            className="sideBarOverlay"
+            onClick={closeSideBar}
+            aria-label="Close know me panel"
+          />
+          <aside
+            id="know-me-panel"
+            className="sideBar"
+            ref={sideBarRef}
+            role="dialog"
+            aria-label="Know me"
+            aria-modal="true"
+            tabIndex="-1"
+          >
+            <button
+              type="button"
+              className="sideBarClose"
+              onClick={closeSideBar}
+              aria-label="Close know me panel"
+            >
+              x
+            </button>
+
+            <header className="profileDrawerHeader">
+              <img className="imgProgfile" src={imgProfile} alt="img Profile" />
+              <h3>{copy.greeting}</h3>
+            </header>
+
+            {renderProfileSections}
+
+            <p className="profileDrawerClosing">{copy.closing}</p>
+
+            <section className="profileDrawerSection profileContactSection">
+              <h4>{profileContact.title}</h4>
+              <a className="mailToLink" href={profileContact.emailHref}>
+                {profileContact.emailLabel}
               </a>
-            </div>
-            <div className="containerLogoLinke">
-              <a href="https://www.linkedin.com/in/enrique-hernandez-684a2323a">
-                <img
-                  className="logoLinke"
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png"
-                  alt="logo linkenid"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
+            </section>
+
+            <section className="profileDrawerSection socialLinksSection">
+              <h4>Social links</h4>
+              <div className="containersTwoLogos">{renderSocialLinks}</div>
+            </section>
+          </aside>
+        </>
       )}
-      <div>
-        <input
-          type="checkbox"
-          id={bbb === true ? "containerAllSideBar" : "buttonSideBar"}
-          checked={renderSideBar}
-          onChange={watchSideBar}
-        />
-      </div>
+      <button
+        type="button"
+        className={`buttonSideBar ${renderSideBar ? "isOpen" : ""}`}
+        onClick={openOrFocusSideBar}
+        aria-expanded={renderSideBar}
+        aria-controls="know-me-panel"
+      >
+        <span>know me</span>
+      </button>
     </>
   );
 }

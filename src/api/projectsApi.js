@@ -1,7 +1,9 @@
+import { API_BASE_URL } from "./apiConfig";
+
 async function getAllProjectsToApi() {
   try {
     const allDataProjects = await fetch(
-      "http://localhost:8082/api_briefcase/v1/getAllProjects"
+      `${API_BASE_URL}/v1/getAllProjects`
     );
     if (!allDataProjects.ok) {
       throw new Error("err in Api ");
@@ -16,7 +18,7 @@ async function getAllProjectsToApi() {
 async function postNewProjectToApi(body) {
   try {
     const postNewProject = await fetch(
-      "http://localhost:8082/api_briefcase/v1/postAnewProject",
+      `${API_BASE_URL}/v1/postAnewProject`,
       {
         method: "POST",
         credentials: "include",
@@ -32,7 +34,7 @@ async function postNewProjectToApi(body) {
 async function updateAprojectFromApi(idProject, newBody) {
   try {
     const updateAproject = await fetch(
-      `http://localhost:8082/api_briefcase/v1/modifiedAProject/${idProject}`,
+      `${API_BASE_URL}/v1/modifiedAProject/${idProject}`,
       {
         method: "PUT",
         credentials: "include",
@@ -50,7 +52,7 @@ async function updateAprojectFromApi(idProject, newBody) {
 async function deleteOnProjectFromApi(id) {
   try {
     const deleteElement = await fetch(
-      `http://localhost:8082/api_briefcase/v1/deleteAproject/${id}`,
+      `${API_BASE_URL}/v1/deleteAproject/${id}`,
       {
         method: "DELETE",
         credentials: "include",

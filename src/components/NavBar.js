@@ -1,77 +1,92 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormLoginAdmin from "./FormLoginAdmin";
-import { toast } from "react-toastify";
-import swal from "sweetalert";
-const adminLogo =
-  "https://www.clipartmax.com/png/small/5-56891_home-user-icon-user-and-laptop-ico.png";
+import AdminAccessModal from "./AdminAccessModal";
+import adminLogo from "../icons/AdminLogo.png";
+import { getAdminAccessCopy } from "../data/adminAccessCopy";
 export default function NavBar({
   session,
-  msge,
   changesOnFormLogin,
   adminForm,
   submitFormLogin,
+  language,
 }) {
   const [renderFormLogin, setRenderFormLogin] = React.useState(false);
-  const showToastMessage = () => {
-    toast.info("Only Admins! You can only see this page for reading purposes", {
-      position: "top-center",
-      autoClose: 3000,
-      pauseOnHover: false,
-      theme: "dark",
-    });
+  const [renderAdminAccess, setRenderAdminAccess] = React.useState(false);
+  const navigate = useNavigate();
+  const copy = getAdminAccessCopy(language);
+
+  const openAdminAccess = () => {
+    setRenderAdminAccess(true);
   };
 
-  function getswalChangesRenderCredentials() {
-    swal({
-      title: "Only Admins",
-      text: "You have the credentials",
-      buttons: ["NO", "YES"],
-    }).then((value) => {
-      if (value === true) {
-        setRenderFormLogin((prev) => !prev);
-      }
-      if (value === null) {
-        showToastMessage();
-      }
+  const exploreAdminPanel = () => {
+    setRenderAdminAccess(false);
+    navigate("/admin_panel");
+  };
+
+  const showAdminSignIn = () => {
+    setRenderAdminAccess(false);
+    setRenderFormLogin(true);
+  };
+
+  const handleLoginSubmit = (event) => {
+    submitFormLogin(event, () => {
+      setRenderFormLogin(false);
+      navigate("/admin_panel");
     });
-  }
+  };
 
   return (
     <header className="navBar">
       <h1 className="titlePage">
         <Link className="linkHome" to="/">
-          @Hi, I'm Enrique
+          @Hi, I'm Monti
         </Link>
       </h1>
       <ul>
         <li>
-          <Link className="linkSkills" to="/skills">
+          <Link className="navLink linkSkills" to="/skills">
             Skills
           </Link>
         </li>
-        <li className="linkKnowLi">
-          <Link className="linkKnow" to={"/admin_panel"}>
-            {session === true ? (
-              <p>Admin panel</p>
-            ) : (
+        <li>
+          {session === true ? (
+            <Link className="navLink linkAdminPanel" to={"/admin_panel"}>
+              Admin panel
+            </Link>
+          ) : (
+            <button
+              type="button"
+              className="adminAccessButton"
+              onClick={openAdminAccess}
+              aria-label={copy.title}
+            >
               <img
-                //cambiar esto para que lo haga solo cuandop carge el admin panel
-                onClick={getswalChangesRenderCredentials}
                 className="logoAdminConnect"
                 src={adminLogo}
-                alt="amdminIcon"
+                alt=""
+                aria-hidden="true"
               />
-            )}
-          </Link>
+            </button>
+          )}
         </li>
       </ul>
+      {renderAdminAccess && (
+        <AdminAccessModal
+          copy={copy}
+          onClose={() => setRenderAdminAccess(false)}
+          onExplore={exploreAdminPanel}
+          onSignIn={showAdminSignIn}
+        />
+      )}
       {renderFormLogin && (
         <FormLoginAdmin
           changesOnFormLogin={changesOnFormLogin}
           adminForm={adminForm}
-          submitFormLogin={submitFormLogin}
+          submitFormLogin={handleLoginSubmit}
           setRenderFormLogin={setRenderFormLogin}
+          copy={copy}
         />
       )}
     </header>

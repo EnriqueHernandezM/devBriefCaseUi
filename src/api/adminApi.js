@@ -1,15 +1,14 @@
+import { API_BASE_URL } from "./apiConfig";
+
 async function getLoginAdmin() {
   try {
-    const getAdmin = await fetch(
-      "http://localhost:8082/api_briefcase/v1/login",
-      {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const getAdmin = await fetch(`${API_BASE_URL}/`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (getAdmin.status === 401) {
       return { session: false };
     }
@@ -25,18 +24,14 @@ async function getLoginAdmin() {
 
 async function loginAdmin(dataAdmin) {
   try {
-    const loginAdmin = await fetch(
-      "http://localhost:8082/api_briefcase/v1/login",
-
-      {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataAdmin),
-      }
-    );
+    const loginAdmin = await fetch(`${API_BASE_URL}/v1/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataAdmin),
+    });
     const resToAdmin = await loginAdmin.json();
     return resToAdmin;
   } catch (err) {
@@ -45,16 +40,13 @@ async function loginAdmin(dataAdmin) {
 }
 async function logOutAdmin() {
   try {
-    const closeSession = await fetch(
-      "http://localhost:8082/api_briefcase/v1/logOut",
-      {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const closeSession = await fetch(`${API_BASE_URL}/v1/logOut`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (!closeSession.ok) {
       throw new Error("err in Api Admin");
     }

@@ -9,8 +9,11 @@ import {
 } from "../api/projectsApi";
 import { logOutAdmin } from "../api/adminApi.js";
 import { toast } from "react-toastify";
-export default function AdminPanel({ session }) {
+import { appendProjectFieldsToFormData } from "../functions/projectFormData";
+import { getAdminAccessCopy } from "../data/adminAccessCopy";
+export default function AdminPanel({ session, language, isReadOnlyPreview }) {
   const [allProjectsTo, setAllProjectsTo] = React.useState([]);
+  const copy = getAdminAccessCopy(language);
 
   React.useEffect(() => {
     getAllProjectsToApi()
@@ -19,6 +22,9 @@ export default function AdminPanel({ session }) {
   }, []);
 
   const deleteAproject = (id) => {
+    if (isReadOnlyPreview) {
+      return;
+    }
     deleteOnProjectFromApi(id)
       .then((res) => {
         if (res.session === false) {
@@ -40,12 +46,12 @@ export default function AdminPanel({ session }) {
   };
   const updateAproject = (event, idProject, newBody, filesPut) => {
     event.preventDefault();
+    if (isReadOnlyPreview) {
+      return;
+    }
     const formData = new FormData();
-    formData.append("nameProject", newBody.nameProject);
-    formData.append("tagsProject", newBody.tagsProject);
-    formData.append("description", newBody.description);
-    formData.append("urlProject", newBody.urlProject);
-    if (filesPut.length === 0 || filesPut.length === 1) {
+    appendProjectFieldsToFormData(formData, newBody);
+    if (filesPut.length === 1) {
       toast.warn("add one more image", {
         position: "top-center",
         autoClose: 3000,
@@ -84,16 +90,27 @@ export default function AdminPanel({ session }) {
 
   return (
     <div className={"containerAdminPanel"}>
-      <div className="containerButtonLogOut">
-        <button className="buttonLogOut" onClick={logOutSession}>
-          log Out
-        </button>
-      </div>
-      <PostNewProject />
+      {isReadOnlyPreview ? (
+        <div className="adminPreviewNotice">
+          <h2>{copy.previewTitle}</h2>
+          <p>{copy.previewDescription}</p>
+        </div>
+      ) : (
+        <div className="containerButtonLogOut">
+          <button className="buttonLogOut" onClick={logOutSession}>
+            log Out
+          </button>
+        </div>
+      )}
+      <PostNewProject
+        isReadOnlyPreview={isReadOnlyPreview}
+        language={language}
+      />
       <UpdateOrDeleteProjects
         arrProjects={allProjectsTo}
         deleteAproject={deleteAproject}
         updateAproject={updateAproject}
+        isReadOnlyPreview={isReadOnlyPreview}
       />
     </div>
   );

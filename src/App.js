@@ -9,6 +9,7 @@ import SideBar from "./components/SideBar";
 import AdminPanel from "./components/AdminPanel";
 
 function App() {
+  const [language, setLanguage] = React.useState("en");
   const [adminForm, setAdminForm] = React.useState({
     name: "",
     password: "",
@@ -25,10 +26,15 @@ function App() {
     });
   };
   //Aqui es donde tenemos que modificara para revisar las entradas qeuestan en formAdmin
-  const submitFormLogin = (event) => {
+  const submitFormLogin = (event, onSuccess) => {
     event.preventDefault();
     loginAdmin(adminForm)
-      .then((res) => setAdminGetData(res))
+      .then((res) => {
+        setAdminGetData(res);
+        if (res.session === true && typeof onSuccess === "function") {
+          onSuccess();
+        }
+      })
       .catch((err) => err);
   };
 
@@ -46,13 +52,21 @@ function App() {
           changesOnFormLogin={changesOnFormLogin}
           adminForm={adminForm}
           submitFormLogin={submitFormLogin}
+          language={language}
+          setLanguage={setLanguage}
         />
         <SideBar />
         <Routes>
           <Route path="/skills" element={<SkillsPage />} />
           <Route
             path="/admin_panel"
-            element={<AdminPanel {...adminGetData} />}
+            element={
+              <AdminPanel
+                {...adminGetData}
+                language={language}
+                isReadOnlyPreview={adminGetData.session !== true}
+              />
+            }
           />
           <Route path="/" element={<Home />} />
         </Routes>

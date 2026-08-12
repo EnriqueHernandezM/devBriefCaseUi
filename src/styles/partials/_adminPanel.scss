@@ -28,7 +28,7 @@
         margin-right: 2rem;
         width: 13rem;
         font-size: 1.7rem;
-        border-radius: 20px;
+        border-block-color: red;
       }
       @include tabletHorixzontalAndDesk {
         padding: 0.5rem;
@@ -82,77 +82,243 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0rem 2rem 0rem;
-  margin: 0.75rem 0.15rem 1rem 0.15rem;
-  border-radius: 10px;
-  box-shadow: 0rem 0.15rem 1.15rem 0.35rem $colorEffectShadow;
+  width: min(100%, 58rem);
+  padding: 1rem;
+  margin: 0.75rem auto 1rem auto;
+  border: 1px solid rgba(189, 242, 226, 0.12);
+  border-radius: 12px;
+  box-shadow: 0rem 0.15rem 1.15rem 0.15rem rgba(1, 1, 91, 0.72);
   h2 {
+    color: $fontColorPrimary;
     font-size: 1.2rem;
     text-align: center;
-    margin-bottom: 9px;
+    margin-bottom: 0.9rem;
     @include mobileHorizontalAndTabletVertical {
-      font-size: 2.6rem;
+      font-size: 2rem;
     }
     @include tabletHorixzontalAndDesk {
-      font-size: 2.75rem;
+      font-size: 2.2rem;
     }
   }
-  label {
-    padding: 0.25rem 0rem 0.25rem 0.75rem;
-    .buttonSelectFiles {
-      margin: 1rem 1rem 1rem 1.1rem;
-      padding: 0.25rem;
-      width: 10rem;
-      @include mobileHorizontalAndTabletVertical {
-        width: 17rem;
-        margin: 3rem 1rem 1rem 1rem;
-        padding: 0.35rem;
-      }
-      border-radius: 10px;
-      color: rgb(189, 242, 226);
-      border: 0;
-      box-shadow: 0.25rem 0.25rem 0.75rem 0.25rem $colorEffectShadow;
-      background: linear-gradient(90deg, #00033d 0%, #4b54ff1c 96%);
-      display: inline-block;
-      text-align: center;
+
+  .projectFormGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    width: 100%;
+  }
+
+  .projectFormRow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    width: 100%;
+
+    @include tabletHorixzontalAndDesk {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    input {
+  }
+
+  .projectFormRowCompact {
+    align-items: end;
+  }
+
+  .projectFormField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+    width: 100%;
+
+    label,
+    .projectFormLabelText {
       color: $fontColorSecondary;
-      width: 80vw;
-      margin-left: 0.5rem;
-      border-radius: 5px;
-      padding: 3px;
+      font-size: 0.95rem;
+      line-height: 1.25;
+    }
+
+    input,
+    textarea,
+    select {
+      color: $fontColorSecondary;
+      width: 100%;
+      min-height: 2.75rem;
+      border-radius: 7px;
+      padding: 0.65rem 0.75rem;
       background-color: $colorPrimary;
-      border: 1px solid rgb(125, 123, 123);
+      border: 1px solid rgba(189, 242, 226, 0.18);
+      transition: border-color 180ms ease, box-shadow 180ms ease,
+        background 180ms ease;
       @include mobileHorizontalAndTabletVertical {
-        font-size: 1.65rem;
+        font-size: 1.25rem;
+      }
+      @include tabletHorixzontalAndDesk {
+        font-size: 1rem;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $fontColorDetails;
+        box-shadow: 0rem 0rem 0rem 0.12rem rgba(0, 255, 255, 0.16);
+        background: rgba(2, 0, 51, 0.92);
       }
     }
-    input::placeholder {
-      color: $fontColorSecondary;
+
+    textarea {
+      resize: vertical;
+    }
+
+    .textarea-small {
+      min-height: 4.5rem;
+    }
+
+    .textarea-medium {
+      min-height: 6rem;
+    }
+
+    .textarea-large {
+      min-height: 7.5rem;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(196, 210, 238, 0.56);
     }
   }
-  .buttoPostAndUpdateProject {
-    margin: 1rem;
-    padding: 0.5rem;
-    width: 11rem;
-    border-radius: 20px;
+
+  .projectFormFieldFull {
+    width: 100%;
+  }
+
+  .projectFormHelp {
+    margin: 0rem;
+    color: rgba(196, 210, 238, 0.7);
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+
+  .projectFormSection {
+    width: 100%;
+    margin: 0.75rem 0rem;
+    padding: 1rem;
+    border: 1px solid rgba(189, 242, 226, 0.16);
+    border-radius: 10px;
+    background: rgba(0, 3, 69, 0.34);
+    legend {
+      margin-left: 0.2rem;
+      padding: 0rem 0.5rem;
+      color: $fontColorDetails;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+  }
+  .projectFormSection:disabled {
+    opacity: 0.62;
+  }
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 2.75rem;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid rgba(189, 242, 226, 0.18);
+    border-radius: 7px;
+    background-color: $colorPrimary;
+    cursor: pointer;
+
+    input {
+      width: 1.1rem;
+      min-height: 1.1rem;
+      accent-color: $fontColorDetails;
+      cursor: pointer;
+    }
+
+    span {
+      color: $fontColorSecondary;
+      line-height: 1.2;
+    }
+  }
+
+  .fileInputLabel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 2.65rem;
+    margin-top: 0.25rem;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid rgba(189, 242, 226, 0.24);
+    border-radius: 8px;
     color: rgb(189, 242, 226);
-    border: 0;
-    box-shadow: 0.25rem 0.25rem 0.75rem 0.25rem $colorEffectShadow;
-    background: linear-gradient(90deg, #00033d 0%, #4b54ff1c 96%);
-    width: 70%;
+    background: rgba(189, 242, 226, 0.06);
+    cursor: pointer;
+    transition: transform 180ms ease, border-color 180ms ease,
+      background 180ms ease;
+
+    &:hover,
+    &:focus-within {
+      transform: translateY(-1px);
+      border-color: rgba(189, 242, 226, 0.42);
+      background: rgba(189, 242, 226, 0.1);
+    }
+  }
+
+  .buttoPostAndUpdateProject {
+    margin: 1rem 0rem 0rem 0rem;
+    padding: 0.75rem 1rem;
+    min-height: 2.8rem;
+    border-radius: 8px;
+    color: rgb(189, 242, 226);
+    border: 1px solid rgba(189, 242, 226, 0.24);
+    box-shadow: 0.18rem 0.18rem 0.55rem 0.1rem $colorEffectShadow;
+    background: rgba(189, 242, 226, 0.06);
+    width: 100%;
+    cursor: pointer;
+    transition: transform 180ms ease, border-color 180ms ease,
+      background 180ms ease;
     @include mobileHorizontalAndTabletVertical {
-      width: 40%;
-      padding: 1.15rem;
-      margin: 1.5rem;
-      font-size: 1.75rem;
+      width: 18rem;
+      padding: 0.9rem 1.1rem;
+      font-size: 1.35rem;
     }
     @include tabletHorixzontalAndDesk {
-      width: 20%;
-      padding: 1.1rem;
-      margin: 1.5rem;
+      width: 14rem;
+      font-size: 1rem;
     }
+
+    &:hover,
+    &:focus {
+      transform: translateY(-1px);
+      border-color: rgba(189, 242, 226, 0.42);
+      background: rgba(189, 242, 226, 0.1);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $fontColorDetails;
+      outline-offset: 0.25rem;
+    }
+  }
+  .buttoPostAndUpdateProject:disabled {
+    cursor: not-allowed;
+    opacity: 0.48;
+    filter: saturate(0.55);
+  }
+}
+.adminPreviewNotice {
+  margin: 0.5rem 0.15rem 1rem 0.15rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(189, 242, 226, 0.2);
+  border-radius: 10px;
+  color: $fontColorSecondary;
+  background: rgba(189, 242, 226, 0.05);
+  h2 {
+    margin: 0rem 0rem 0.35rem 0rem;
+    color: $fontColorDetails;
+    font-size: 1.05rem;
+  }
+  p {
+    margin: 0rem;
+    line-height: 1.45;
   }
 }
 .containerElementsToUpdateOrDelete {
@@ -172,7 +338,8 @@
     border-radius: 10px;
     box-shadow: 0.15rem 0.15rem 0.75rem 0.15rem $colorEffectShadow;
     label {
-      input::placeholder {
+      input::placeholder,
+      textarea::placeholder {
         color: $fontColorDetails;
       }
     }
@@ -194,11 +361,23 @@
     p {
       padding: 0.75rem;
     }
-    span {
+    span,
+    .projectAdminListAction {
       text-align: end;
       padding-right: 1.5rem;
       display: block;
       cursor: pointer;
+    }
+    .projectAdminListAction {
+      width: 100%;
+      border: 0;
+      color: $fontColorDetails;
+      background: transparent;
+      font: inherit;
+    }
+    .projectAdminListAction:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
     }
   }
 }
@@ -247,15 +426,16 @@
       font-size: 2.1rem;
     }
   }
-  span {
-    margin-left: 40%;
-    font-size: $fontSizeMobile;
-    @include mobileHorizontalAndTabletVertical {
-      margin-left: 63%;
-    }
-    @include tabletHorixzontalAndDesk {
-      margin-left: 75%;
-    }
+  .closeLoginAdmin {
+    float: right;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.45rem;
+    border: 1px solid rgba(189, 242, 226, 0.24);
+    border-radius: 6px;
+    color: $fontColorSecondary;
+    background: $colorSecondary;
+    cursor: pointer;
   }
   form {
     label {

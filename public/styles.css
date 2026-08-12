@@ -1,0 +1,1209 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #020033;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.swal-overlay {
+  background-color: rgba(0, 0, 0, 0.872);
+}
+
+.swal-modal {
+  background: linear-gradient(90deg, #00033d 0%, rgba(75, 84, 255, 0.1098039216) 96%);
+  color: antiquewhite;
+}
+
+.swal-title {
+  color: #00ffff;
+  font-size: 2rem;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+  margin-bottom: 28px;
+}
+
+.swal-text {
+  display: block;
+  margin: 12px;
+  font-size: 1.6rem;
+  text-align: center;
+  color: #00ffff;
+}
+
+.swal-button--confirm {
+  color: #00ffff;
+  background-color: rgba(1, 25, 69, 0);
+  padding: 7px 19px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.swal-button--cancel {
+  color: #00ffff;
+  background-color: rgba(1, 25, 69, 0);
+  padding: 7px 19px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.swal-button--confirm:hover {
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+}
+
+.swal-button--cancel:hover {
+  color: rgb(19, 18, 18);
+}
+
+.navBar {
+  background-color: #000338;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.15rem 0.1rem 1.15rem 0.1rem;
+}
+.navBar .titlePage {
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0rem 0rem 0rem 0.75rem;
+}
+.navBar .titlePage .linkHome {
+  text-decoration: none;
+  color: #c4d2ee;
+}
+@media (min-width: 768px) {
+  .navBar .titlePage {
+    font-size: 2.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .navBar .titlePage {
+    font-size: 3rem;
+  }
+  .navBar .titlePage .linkHome:hover {
+    font-size: 3.01rem;
+    color: #ffffff;
+  }
+}
+.navBar ul {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.35rem;
+}
+@media (min-width: 768px) {
+  .navBar ul {
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .navBar ul {
+    font-size: 2.5rem;
+  }
+}
+.navBar ul li {
+  cursor: pointer;
+  list-style: none;
+}
+.navBar ul li .linkSkills, .navBar ul li .linkKnow {
+  text-decoration: none;
+  color: #c4d2ee;
+}
+@media (min-width: 1024px) {
+  .navBar ul li .linkSkills:hover, .navBar ul li .linkKnow:hover {
+    font-size: 2.54rem;
+    color: #ffffff;
+  }
+}
+.navBar ul li .logoAdminConnect {
+  width: 2rem;
+}
+@media (min-width: 768px) {
+  .navBar ul li .logoAdminConnect {
+    width: 4.25rem;
+  }
+}
+@media (min-width: 1024px) {
+  .navBar ul li .logoAdminConnect {
+    width: 3rem;
+  }
+}
+.navBar ul li .logoAdminConnect:hover {
+  scale: 1.2;
+  filter: contrast(5);
+}
+.navBar ul li .linkKnow:hover {
+  color: #ffffff;
+}
+
+.sideBar {
+  position: absolute;
+  width: 75%;
+  background-color: #000345;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.15rem 0.5rem 0.5rem 0.5rem;
+  z-index: 4;
+  font-size: 12px;
+  animation-name: renderSideBar;
+  animation-duration: 1.2s;
+  animation-timing-function: ease;
+  box-shadow: 0.25rem 0.15rem 1.75rem 0.1rem rgb(0, 0, 0);
+  border-radius: 1px 10px 10px 1px;
+}
+@media (min-width: 768px) {
+  .sideBar {
+    width: 60%;
+    font-size: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .sideBar {
+    width: 30%;
+    font-size: 16px;
+  }
+}
+.sideBar .imgProgfile {
+  width: 40%;
+  height: 6.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 1rem;
+  filter: contrast(1.1);
+  filter: saturate(1.2);
+}
+@media (min-width: 768px) {
+  .sideBar .imgProgfile {
+    height: 12rem;
+  }
+}
+@media (min-width: 1024px) {
+  .sideBar .imgProgfile {
+    height: 11rem;
+  }
+}
+.sideBar h3 {
+  padding: 0.15rem;
+  margin-bottom: 4px;
+}
+.sideBar h4 {
+  align-self: start;
+  padding: 0.18rem;
+}
+.sideBar p {
+  animation: testAnim 1s ease;
+  padding: 5px 10px 5px 10px;
+}
+.sideBar .mailToLink {
+  font-size: 20px;
+  text-decoration: none;
+  padding: 0.4rem;
+  color: #00ffff;
+}
+.sideBar .mailToLink:hover {
+  color: #ffffff;
+}
+.sideBar .containersTwoLogos {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  animation: testAnim 1.8s ease-in;
+}
+.sideBar .containersTwoLogos .containerLogoGitHub > a .logoGitHub {
+  margin: 5px;
+  width: 60px;
+}
+@media (min-width: 768px) {
+  .sideBar .containersTwoLogos .containerLogoGitHub > a .logoGitHub {
+    width: 90px;
+  }
+}
+.sideBar .containersTwoLogos .containerLogoLinke > a .logoLinke {
+  margin: 5px;
+  width: 45px;
+}
+@media (min-width: 768px) {
+  .sideBar .containersTwoLogos .containerLogoLinke > a .logoLinke {
+    width: 60px;
+  }
+}
+
+#buttonSideBar {
+  width: 3.3rem;
+  height: 3rem;
+  appearance: none;
+  background-color: #000345;
+  border-radius: 1px 10px 15px 1px;
+  position: absolute;
+  margin-top: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0rem 0.1rem 0.35rem 0.05rem;
+  animation: prescense 2s ease;
+}
+@media (min-width: 768px) {
+  #buttonSideBar {
+    width: 6.5rem;
+    height: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  #buttonSideBar {
+    width: 6.75rem;
+    height: 4rem;
+  }
+}
+
+#buttonSideBar:checked {
+  box-shadow: 0.3rem 0.1rem 0.15rem 0.05rem;
+  border-radius: 1px 15px 15px 1px;
+  left: 75%;
+  animation: buttonMove 1.2s ease;
+  mix-blend-mode: difference;
+}
+@media (min-width: 768px) {
+  #buttonSideBar:checked {
+    left: 60%;
+  }
+}
+@media (min-width: 1024px) {
+  #buttonSideBar:checked {
+    width: 4rem;
+    left: 30%;
+  }
+}
+
+#buttonSideBar:checked::after {
+  content: "🢀";
+  font-size: 1.25rem;
+  margin-left: 5px;
+  top: 10px;
+}
+@media (min-width: 768px) {
+  #buttonSideBar:checked::after {
+    font-size: 2.5rem;
+    left: 22px;
+    top: 5px;
+  }
+}
+@media (min-width: 1024px) {
+  #buttonSideBar:checked::after {
+    left: 5px;
+    top: 3px;
+  }
+}
+
+#buttonSideBar::after {
+  content: "know me";
+  font-size: 1rem;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  color: #00ffff;
+  animation-name: inherit;
+}
+@media (min-width: 768px) {
+  #buttonSideBar::after {
+    font-size: 1.3rem;
+    left: 11px;
+    top: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  #buttonSideBar::after {
+    font-size: 1.35rem;
+    left: 11px;
+    top: 20px;
+  }
+}
+
+#buttonSideBar:hover::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgb(40, 232, 203), blue, black, blue, rgb(129, 58, 250), blue, black);
+  background-size: 400%;
+  border-radius: 10px;
+  filter: blur(5px);
+  animation: glow 20s linear infinite;
+}
+
+@keyframes renderSideBar {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.1;
+  }
+}
+@keyframes prescense {
+  0% {
+    left: -1rem;
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    left: 0rem;
+    transform: scale(1);
+    transform: scaleX(1.2);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+}
+@keyframes buttonMove {
+  0% {
+    left: 0%;
+  }
+}
+@keyframes testAnim {
+  0% {
+    display: none;
+  }
+  25% {
+    display: none;
+  }
+  50% {
+    display: none;
+    opacity: 0.2;
+  }
+  75% {
+    opacity: 0.5;
+  }
+}
+#containerAllSideBar {
+  display: none;
+}
+
+#addEmergency {
+  width: 35%;
+  color: white;
+  margin-left: 60%;
+  margin-top: -3%;
+  border: 1px solid red;
+  text-align: center;
+  background-color: rgba(0, 255, 255, 0.126);
+  border-radius: 10px;
+}
+#addEmergency p {
+  padding: 5px;
+  font-size: 0.85rem;
+}
+@media (min-width: 768px) {
+  #addEmergency p {
+    font-size: 1.25rem;
+  }
+}
+#addEmergency h3 {
+  padding: 3px;
+  font-size: 1.15rem;
+}
+@media (min-width: 768px) {
+  #addEmergency h3 {
+    font-size: 1.25rem;
+  }
+}
+#addEmergency a .logoGitHubAdd {
+  width: 45%;
+}
+@media (min-width: 768px) {
+  #addEmergency a .logoGitHubAdd {
+    width: 15%;
+  }
+}
+
+.pageHome {
+  margin-top: 4.15rem;
+}
+
+.containerCardOneProject {
+  color: #c4d2ee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  padding: 1.25rem;
+  background-color: #000345;
+  border-radius: 20px;
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: start;
+    width: 96.5%;
+    margin: auto;
+    margin-top: 18px;
+  }
+}
+.containerCardOneProject .carouselImgs {
+  position: relative;
+  width: 99%;
+  height: 30vh;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .carouselImgs {
+    width: 99%;
+    height: 47vh;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .carouselImgs {
+    width: 49%;
+    height: 80vh;
+  }
+}
+.containerCardOneProject .carouselImgs img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .carouselImgs img {
+    width: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .carouselImgs img {
+    width: 100%;
+  }
+}
+.containerCardOneProject .carouselImgs .img1, .containerCardOneProject .carouselImgs .img4, .containerCardOneProject .carouselImgs .img3, .containerCardOneProject .carouselImgs .img2 {
+  position: absolute;
+}
+.containerCardOneProject .carouselImgs .buttonsCarousel {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.containerCardOneProject .carouselImgs .buttonsCarousel .chevronLeft img {
+  width: 2rem;
+  height: 4rem;
+  margin: 1rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .carouselImgs .buttonsCarousel .chevronLeft img {
+    width: 4rem;
+    height: 8rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .carouselImgs .buttonsCarousel .chevronLeft img {
+    width: 5rem;
+    height: 10rem;
+  }
+}
+.containerCardOneProject .carouselImgs .buttonsCarousel .chevronRight img {
+  width: 2rem;
+  height: 4rem;
+  margin: 1rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .carouselImgs .buttonsCarousel .chevronRight img {
+    width: 4rem;
+    height: 8rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .carouselImgs .buttonsCarousel .chevronRight img {
+    width: 5rem;
+    height: 10rem;
+  }
+}
+.containerCardOneProject .textsCard {
+  margin-top: 1rem;
+  padding: 1rem 0rem 0rem 0rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .textsCard {
+    margin-top: 1rem;
+    padding: 3rem 0rem 0rem 0rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .textsCard {
+    width: 49%;
+    margin-top: 0rem;
+    padding: 0.25rem 0rem 0rem 0rem;
+  }
+}
+.containerCardOneProject .textsCard h1 {
+  font-size: 1.75rem;
+  padding: 0.25rem 0rem 0.5rem 0rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .textsCard h1 {
+    padding: 0.25rem 0rem 0.75rem 0rem;
+    font-size: 3.1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .textsCard h1 {
+    padding: 0.25rem 0rem 1rem 0rem;
+    font-size: 2.85rem;
+  }
+}
+.containerCardOneProject .textsCard p {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .textsCard p {
+    font-size: 1.7rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .textsCard p {
+    font-size: 1.45rem;
+  }
+}
+.containerCardOneProject .textsCard a {
+  text-decoration: none;
+  color: #00ffff;
+  font-size: 1.5rem;
+  display: block;
+  text-align: right;
+  padding: 1rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .textsCard a {
+    font-size: 2.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .textsCard a {
+    font-size: 2.75rem;
+  }
+}
+.containerCardOneProject .textsCard span {
+  display: inline-block;
+  padding: 0.4rem;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .textsCard span {
+    font-size: 2.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerCardOneProject .textsCard span {
+    padding: 0.4rem;
+    font-size: 2.15rem;
+  }
+}
+.containerCardOneProject .textsCard span::before {
+  content: "#";
+  color: #00ffff;
+}
+@media (min-width: 768px) {
+  .containerCardOneProject .textsCard span::before {
+    font-size: 2rem;
+  }
+}
+
+.msgeNotProjects {
+  text-align: center;
+  color: #00ffff;
+  padding: 0.25rem 0rem 0rem 0rem;
+  margin: 5rem;
+  font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+  .msgeNotProjects {
+    padding: 0.25rem 0rem 0rem 0rem;
+    font-size: 1.7rem;
+  }
+}
+@media (min-width: 1024px) {
+  .msgeNotProjects {
+    padding: 0.25rem 0rem 0rem 0rem;
+    font-size: 1.45rem;
+  }
+}
+
+.containerAdminPanel {
+  color: #ffffff;
+  padding: 1rem;
+  font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+  .containerAdminPanel {
+    font-size: 1.7rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerAdminPanel {
+    font-size: 1.45rem;
+    padding: 3rem;
+  }
+}
+.containerAdminPanel .containerButtonLogOut {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.containerAdminPanel .containerButtonLogOut .buttonLogOut {
+  padding: 0.5rem;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  width: 7rem;
+  border-radius: 15px;
+  color: rgb(189, 242, 226);
+  border: 0;
+  box-shadow: 0.25rem 0.25rem 0.75rem 0.15rem #01015b;
+  background: rgb(0, 0, 0);
+  position: relative;
+}
+@media (min-width: 768px) {
+  .containerAdminPanel .containerButtonLogOut .buttonLogOut {
+    padding: 1.15rem;
+    margin-right: 2rem;
+    width: 13rem;
+    font-size: 1.7rem;
+    border-block-color: red;
+  }
+}
+@media (min-width: 1024px) {
+  .containerAdminPanel .containerButtonLogOut .buttonLogOut {
+    padding: 0.5rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 11rem;
+  }
+}
+.containerAdminPanel .containerButtonLogOut .buttonLogOut:hover::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgb(40, 232, 203), blue, rgb(255, 105, 185), blue, black, rgb(21, 229, 226), blue, rgb(129, 58, 250), blue, black);
+  background-size: 400%;
+  border-radius: 10px;
+  filter: blur(5px);
+  animation: glow 20s linear infinite;
+}
+@keyframes glow {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    display: none;
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.containerFormPostNewProject, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0rem 2rem 0rem;
+  margin: 0.75rem 0.15rem 1rem 0.15rem;
+  border-radius: 10px;
+  box-shadow: 0rem 0.15rem 1.15rem 0.35rem #01015b;
+}
+.containerFormPostNewProject h2, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 9px;
+}
+@media (min-width: 768px) {
+  .containerFormPostNewProject h2, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject h2 {
+    font-size: 2.6rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerFormPostNewProject h2, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject h2 {
+    font-size: 2.75rem;
+  }
+}
+.containerFormPostNewProject label, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label {
+  padding: 0.25rem 0rem 0.25rem 0.75rem;
+}
+.containerFormPostNewProject label .buttonSelectFiles, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label .buttonSelectFiles {
+  margin: 1rem 1rem 1rem 1.1rem;
+  padding: 0.25rem;
+  width: 10rem;
+  border-radius: 10px;
+  color: rgb(189, 242, 226);
+  border: 0;
+  box-shadow: 0.25rem 0.25rem 0.75rem 0.25rem #01015b;
+  background: linear-gradient(90deg, #00033d 0%, rgba(75, 84, 255, 0.1098039216) 96%);
+  display: inline-block;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .containerFormPostNewProject label .buttonSelectFiles, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label .buttonSelectFiles {
+    width: 17rem;
+    margin: 3rem 1rem 1rem 1rem;
+    padding: 0.35rem;
+  }
+}
+.containerFormPostNewProject label input, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label input {
+  color: #c4d2ee;
+  width: 80vw;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+  padding: 3px;
+  background-color: #020033;
+  border: 1px solid rgb(125, 123, 123);
+}
+@media (min-width: 768px) {
+  .containerFormPostNewProject label input, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label input {
+    font-size: 1.65rem;
+  }
+}
+.containerFormPostNewProject label input::placeholder, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label input::placeholder {
+  color: #c4d2ee;
+}
+.containerFormPostNewProject .buttoPostAndUpdateProject, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject .buttoPostAndUpdateProject, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject .buttonCancelUpdate, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject button {
+  margin: 1rem;
+  padding: 0.5rem;
+  width: 11rem;
+  border-radius: 20px;
+  color: rgb(189, 242, 226);
+  border: 0;
+  box-shadow: 0.25rem 0.25rem 0.75rem 0.25rem #01015b;
+  background: linear-gradient(90deg, #00033d 0%, rgba(75, 84, 255, 0.1098039216) 96%);
+  width: 70%;
+}
+@media (min-width: 768px) {
+  .containerFormPostNewProject .buttoPostAndUpdateProject, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject .buttoPostAndUpdateProject, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject .buttonCancelUpdate, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject button {
+    width: 40%;
+    padding: 1.15rem;
+    margin: 1.5rem;
+    font-size: 1.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .containerFormPostNewProject .buttoPostAndUpdateProject, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject .buttoPostAndUpdateProject, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject .buttonCancelUpdate, .containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject button {
+    width: 20%;
+    padding: 1.1rem;
+    margin: 1.5rem;
+  }
+}
+
+.containerElementsToUpdateOrDelete {
+  margin: 0.25rem 0.15rem 1rem 0.15rem;
+  padding: 1rem 0rem 1rem 0rem;
+}
+.containerElementsToUpdateOrDelete h2 {
+  font-size: 1rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .containerElementsToUpdateOrDelete h2 {
+    font-size: 2.6rem;
+  }
+}
+.containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject {
+  margin: 2rem 0rem 1.5rem 0rem;
+  padding: 0.75rem 0rem 1.25rem 0rem;
+  border-radius: 10px;
+  box-shadow: 0.15rem 0.15rem 0.75rem 0.15rem #01015b;
+}
+.containerElementsToUpdateOrDelete .renderPrevWindowUpdateProject label input::placeholder {
+  color: #00ffff;
+}
+.containerElementsToUpdateOrDelete .containerPrevProjectsToDel {
+  margin: 2rem 0rem 1.5rem 0rem;
+  padding: 0.75rem 0rem 1.25rem 0rem;
+  border-radius: 10px;
+  box-shadow: 0.15rem 0.15rem 0.75rem 0.15rem #01015b;
+}
+.containerElementsToUpdateOrDelete .containerPrevProjectsToDel h3 {
+  padding: 0.75rem;
+}
+.containerElementsToUpdateOrDelete .containerPrevProjectsToDel p {
+  padding: 0.75rem;
+}
+.containerElementsToUpdateOrDelete .containerPrevProjectsToDel span {
+  text-align: end;
+  padding-right: 1.5rem;
+  display: block;
+  cursor: pointer;
+}
+
+.containerPreviewImages {
+  padding: 0.15rem 0.15rem 0.15rem 0.15rem;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.containerPreviewImages .containerAimage {
+  width: 50%;
+  position: relative;
+}
+.containerPreviewImages .containerAimage button {
+  position: absolute;
+  width: 15px;
+  margin: 7px;
+}
+.containerPreviewImages .containerAimage img {
+  width: 100%;
+}
+
+.formLoginAdmin {
+  border-radius: 25px;
+  padding: 0.1rem 0.55rem 1.5rem 0.55rem;
+  width: 80%;
+  background: rgba(0, 0, 0, 0.864);
+  position: absolute;
+  left: 10%;
+  top: 25%;
+  color: #ffffff;
+  box-shadow: 0.25rem 0.25rem 2.75rem 0.25rem rgb(0, 0, 0);
+}
+.formLoginAdmin h4 {
+  display: inline-block;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .formLoginAdmin h4 {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .formLoginAdmin h4 {
+    font-size: 2.1rem;
+  }
+}
+.formLoginAdmin span {
+  margin-left: 40%;
+  font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+  .formLoginAdmin span {
+    margin-left: 63%;
+  }
+}
+@media (min-width: 1024px) {
+  .formLoginAdmin span {
+    margin-left: 75%;
+  }
+}
+.formLoginAdmin form label input {
+  color: #c4d2ee;
+  padding: 0.25rem;
+  margin: 0.25rem;
+  background-color: rgba(226, 228, 241, 0.1450980392);
+  border: 1px solid rgb(7, 7, 7);
+  border-radius: 10px;
+}
+.formLoginAdmin form button {
+  width: 5rem;
+  border-radius: 9px;
+  margin-left: 1.5rem;
+  padding: 0.25rem 0.45rem 0.25rem 0.45rem;
+  color: rgb(189, 242, 226);
+  border: 0;
+  box-shadow: 0.15rem 0.15rem 0.75rem 0.25rem #01015b;
+  background: linear-gradient(90deg, #00033d 0%, rgba(75, 84, 255, 0.1098039216) 96%);
+}
+
+.containerSkills {
+  margin-bottom: 135vh;
+}
+@media (min-width: 768px) {
+  .containerSkills {
+    margin-bottom: 106vh;
+  }
+}
+@media (min-width: 1024px) {
+  .containerSkills {
+    margin-bottom: 140vh;
+  }
+}
+.containerSkills .imagesSkills {
+  width: 20%;
+  height: 11%;
+  border-radius: 7px;
+  padding: 1px;
+}
+@media (min-width: 768px) {
+  .containerSkills .imagesSkills {
+    margin-top: 3rem;
+    padding: 2px;
+  }
+}
+@media (min-width: 1024px) {
+  .containerSkills .imagesSkills {
+    width: 10%;
+    height: 22%;
+    padding: 3px;
+  }
+}
+
+.htmlLogo, .sequelizeLogo, .knexLogo, .sqlLogo, .mongoLogo, .firebaseLogo, .bootStrapLogo, .awsLogo, .gitHubLogo, .nestJsLogo, .nodeLogo, .typeScriptLogo, .reactLogo, .javaScriptLogo, .scssLogo {
+  position: absolute;
+  animation-name: shea;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s;
+  left: 10%;
+  top: 9rem;
+}
+@media (min-width: 1024px) {
+  .htmlLogo, .sequelizeLogo, .knexLogo, .sqlLogo, .mongoLogo, .firebaseLogo, .bootStrapLogo, .awsLogo, .gitHubLogo, .nestJsLogo, .nodeLogo, .typeScriptLogo, .reactLogo, .javaScriptLogo, .scssLogo {
+    left: 15%;
+  }
+}
+
+.scssLogo {
+  left: 40%;
+}
+@media (min-width: 1024px) {
+  .scssLogo {
+    left: 35%;
+  }
+}
+
+.javaScriptLogo {
+  left: 70%;
+}
+@media (min-width: 1024px) {
+  .javaScriptLogo {
+    left: 55%;
+  }
+}
+
+.reactLogo {
+  top: 18rem;
+  left: 10%;
+}
+@media (min-width: 768px) {
+  .reactLogo {
+    top: 21rem;
+  }
+}
+@media (min-width: 1024px) {
+  .reactLogo {
+    top: 9rem;
+    left: 75%;
+  }
+}
+
+.typeScriptLogo {
+  top: 18rem;
+  left: 40%;
+}
+@media (min-width: 768px) {
+  .typeScriptLogo {
+    top: 21rem;
+  }
+}
+@media (min-width: 1024px) {
+  .typeScriptLogo {
+    left: 15%;
+  }
+}
+
+.nodeLogo {
+  top: 18rem;
+  left: 70%;
+}
+@media (min-width: 768px) {
+  .nodeLogo {
+    top: 21rem;
+  }
+}
+@media (min-width: 1024px) {
+  .nodeLogo {
+    left: 35%;
+  }
+}
+
+.nestJsLogo {
+  top: 27rem;
+  left: 10%;
+}
+@media (min-width: 768px) {
+  .nestJsLogo {
+    top: 33rem;
+  }
+}
+@media (min-width: 1024px) {
+  .nestJsLogo {
+    top: 21rem;
+    left: 55%;
+  }
+}
+
+.gitHubLogo {
+  top: 27rem;
+  left: 40%;
+}
+@media (min-width: 768px) {
+  .gitHubLogo {
+    top: 33rem;
+  }
+}
+@media (min-width: 1024px) {
+  .gitHubLogo {
+    top: 21rem;
+    left: 75%;
+  }
+}
+
+.awsLogo {
+  top: 27rem;
+  left: 70%;
+}
+@media (min-width: 768px) {
+  .awsLogo {
+    top: 33rem;
+  }
+}
+@media (min-width: 1024px) {
+  .awsLogo {
+    left: 15%;
+  }
+}
+
+.bootStrapLogo {
+  top: 36rem;
+  left: 10%;
+}
+@media (min-width: 768px) {
+  .bootStrapLogo {
+    top: 45rem;
+  }
+}
+@media (min-width: 1024px) {
+  .bootStrapLogo {
+    top: 33rem;
+    left: 35%;
+  }
+}
+
+.firebaseLogo {
+  top: 36rem;
+  left: 40%;
+}
+@media (min-width: 768px) {
+  .firebaseLogo {
+    top: 45rem;
+  }
+}
+@media (min-width: 1024px) {
+  .firebaseLogo {
+    top: 33rem;
+    left: 55%;
+  }
+}
+
+.mongoLogo {
+  top: 36rem;
+  left: 70%;
+}
+@media (min-width: 768px) {
+  .mongoLogo {
+    top: 45rem;
+  }
+}
+@media (min-width: 1024px) {
+  .mongoLogo {
+    top: 33rem;
+    left: 75%;
+  }
+}
+
+.sqlLogo {
+  top: 45rem;
+  left: 10%;
+}
+@media (min-width: 768px) {
+  .sqlLogo {
+    top: 57rem;
+  }
+}
+@media (min-width: 1024px) {
+  .sqlLogo {
+    left: 15%;
+    top: 45rem;
+  }
+}
+
+.knexLogo {
+  top: 45rem;
+  left: 40%;
+}
+@media (min-width: 768px) {
+  .knexLogo {
+    top: 57rem;
+  }
+}
+@media (min-width: 1024px) {
+  .knexLogo {
+    left: 35%;
+    top: 45rem;
+  }
+}
+
+.sequelizeLogo {
+  top: 45rem;
+  left: 70%;
+}
+@media (min-width: 768px) {
+  .sequelizeLogo {
+    top: 57rem;
+  }
+}
+@media (min-width: 1024px) {
+  .sequelizeLogo {
+    left: 55%;
+    top: 45rem;
+  }
+}
+
+@keyframes shea {
+  0% {
+    opacity: 0;
+    top: 4rem;
+  }
+}
+.footerContain {
+  padding: 0.25rem;
+  color: #c4d2ee;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 2px;
+  align-items: center;
+  grid-auto-rows: minmax(70px, auto);
+  justify-items: center;
+  text-align: center;
+  background: #000338;
+}
+@media (min-width: 768px) {
+  .footerContain {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.footerContain .imgGitHubFooter {
+  margin: 1rem;
+  width: 20%;
+}/*# sourceMappingURL=styles.css.map */
