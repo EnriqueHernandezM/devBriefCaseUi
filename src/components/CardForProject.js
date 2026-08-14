@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import getCarousel from "../functions/carousel";
 import iconChevronLeft from "../icons/back.png";
 import iconChevronRight from "../icons/next.png";
@@ -11,7 +12,7 @@ export default function CardForProject({
   summary,
   description,
   imagesProject,
-  urlProject,
+  id,
 }) {
   const fileOfImages = getCarousel(imagesProject);
   const [positionStatus, setPositionStatus] = React.useState(0);
@@ -95,9 +96,9 @@ export default function CardForProject({
         <h1>{nameProject} </h1>
         <p className="projectSummary">{textProject}</p>
         <div className="projectTags">{generateTags}</div>
-        <a className="projectCardCta" href={urlProject || "#"}>
+        <Link className="projectCardCta" to={`/projects/${id}`}>
           View case study {"\u2192"}
-        </a>
+        </Link>
       </div>
     </div>
   );

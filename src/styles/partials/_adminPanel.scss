@@ -46,19 +46,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        45deg,
-        rgb(40, 232, 203),
-        blue,
-        rgb(255, 105, 185),
-        blue,
-        black,
-        rgb(21, 229, 226),
-        blue,
-        rgb(129, 58, 250),
-        blue,
-        black
-      );
+      background: linear-gradient(45deg, rgb(40, 232, 203), blue, rgb(255, 105, 185), blue, black, rgb(21, 229, 226), blue, rgb(129, 58, 250), blue, black);
       background-size: 400%;
       border-radius: 10px;
       filter: blur(5px);
@@ -147,7 +135,9 @@
       padding: 0.65rem 0.75rem;
       background-color: $colorPrimary;
       border: 1px solid rgba(189, 242, 226, 0.18);
-      transition: border-color 180ms ease, box-shadow 180ms ease,
+      transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
         background 180ms ease;
       @include mobileHorizontalAndTabletVertical {
         font-size: 1.25rem;
@@ -252,7 +242,9 @@
     color: rgb(189, 242, 226);
     background: rgba(189, 242, 226, 0.06);
     cursor: pointer;
-    transition: transform 180ms ease, border-color 180ms ease,
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
       background 180ms ease;
 
     &:hover,
@@ -274,7 +266,9 @@
     background: rgba(189, 242, 226, 0.06);
     width: 100%;
     cursor: pointer;
-    transition: transform 180ms ease, border-color 180ms ease,
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
       background 180ms ease;
     @include mobileHorizontalAndTabletVertical {
       width: 18rem;
@@ -401,62 +395,171 @@
     }
   }
 }
+.formLoginAdminBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4rem 1rem;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.6);
+
+  @include tabletHorixzontalAndDesk {
+    align-items: center;
+    padding: 2rem;
+  }
+}
+
 .formLoginAdmin {
-  border-radius: 25px;
-  padding: 0.1rem 0.55rem 1.5rem 0.55rem;
-  width: 80%;
-  background: rgba(0, 0, 0, 0.864);
-  position: absolute;
-  left: 10%;
-  top: 25%;
+  position: relative;
+  z-index: 61;
+  border-radius: 20px;
+  padding: 1.75rem 1.25rem 1.5rem 1.25rem;
+  width: 100%;
+  max-width: 24rem;
+  background: rgba(6, 6, 26, 0.96);
+  border: 1px solid rgba(189, 242, 226, 0.14);
   color: $fontColorPrimary;
   box-shadow: 0.25rem 0.25rem 2.75rem 0.25rem rgb(0, 0, 0);
-  @include mobileHorizontalAndTabletVertical {
-  }
+
   @include tabletHorixzontalAndDesk {
+    padding: 2rem 1.75rem 1.75rem 1.75rem;
   }
+
   h4 {
-    display: inline-block;
-    padding: 0.5rem;
-    font-size: 1.5rem;
+    margin: 0 0 1.25rem 0;
+    font-size: 1.4rem;
+    padding-right: 2.25rem;
     @include mobileHorizontalAndTabletVertical {
-      font-size: 2rem;
+      font-size: 1.9rem;
     }
     @include tabletHorixzontalAndDesk {
-      font-size: 2.1rem;
+      font-size: 2rem;
     }
   }
+
   .closeLoginAdmin {
-    float: right;
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
     width: 2rem;
     height: 2rem;
-    margin: 0.45rem;
+    margin: 0;
     border: 1px solid rgba(189, 242, 226, 0.24);
     border-radius: 6px;
     color: $fontColorSecondary;
     background: $colorSecondary;
     cursor: pointer;
   }
+
   form {
-    label {
-      input {
-        color: $fontColorSecondary;
-        padding: 0.25rem;
-        margin: 0.25rem;
-        background-color: #e2e4f125;
-        border: 1px solid rgb(7, 7, 7);
-        border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .fieldLoginAdmin {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+
+    .fieldLoginAdminLabel {
+      color: $fontColorSecondary;
+      font-size: 0.85rem;
+    }
+
+    input {
+      width: 100%;
+      color: $fontColorSecondary;
+      min-height: 2.75rem;
+      padding: 0.65rem 0.75rem;
+      background-color: $colorPrimary;
+      border: 1px solid rgba(189, 242, 226, 0.18);
+      border-radius: 7px;
+      transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+
+      &:focus {
+        outline: none;
+        border-color: $fontColorDetails;
+        box-shadow: 0rem 0rem 0rem 0.12rem rgba(0, 255, 255, 0.16);
+        background: rgba(2, 0, 51, 0.92);
+      }
+
+      &::placeholder {
+        color: rgba(196, 210, 238, 0.56);
       }
     }
-    button {
-      width: 5rem;
-      border-radius: 9px;
-      margin-left: 1.5rem;
-      padding: 0.25rem 0.45rem 0.25rem 0.45rem;
-      color: rgb(189, 242, 226);
+  }
+
+  .passwordInputWrapper {
+    position: relative;
+    width: 100%;
+
+    input {
+      padding-right: 2.5rem;
+    }
+
+    .togglePasswordVisibility {
+      position: absolute;
+      top: 50%;
+      right: 0.6rem;
+      transform: translateY(-50%);
+      width: 1.9rem;
+      height: 1.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 0;
-      box-shadow: 0.15rem 0.15rem 0.75rem 0.25rem $colorEffectShadow;
-      background: linear-gradient(90deg, #00033d 0%, #4b54ff1c 96%);
+      border-radius: 6px;
+      background: transparent;
+      color: rgba(196, 210, 238, 0.75);
+      cursor: pointer;
+
+      &:hover,
+      &:focus-visible {
+        color: $fontColorDetails;
+        background: rgba(189, 242, 226, 0.08);
+      }
+
+      &:focus-visible {
+        outline: 2px solid $fontColorDetails;
+        outline-offset: 0.15rem;
+      }
+    }
+  }
+
+  .submitLoginAdmin {
+    width: 100%;
+    margin-top: 0.25rem;
+    padding: 0.75rem 1rem;
+    min-height: 2.75rem;
+    border-radius: 8px;
+    color: rgb(189, 242, 226);
+    border: 1px solid rgba(189, 242, 226, 0.24);
+    box-shadow: 0.15rem 0.15rem 0.75rem 0.25rem $colorEffectShadow;
+    background: rgba(189, 242, 226, 0.06);
+    cursor: pointer;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      background 180ms ease;
+
+    &:hover,
+    &:focus {
+      transform: translateY(-1px);
+      border-color: rgba(189, 242, 226, 0.42);
+      background: rgba(189, 242, 226, 0.1);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $fontColorDetails;
+      outline-offset: 0.25rem;
     }
   }
 }

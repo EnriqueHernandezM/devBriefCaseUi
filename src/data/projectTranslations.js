@@ -1,0 +1,3 @@
+const projectTranslations = {};
+
+export { projectTranslations };

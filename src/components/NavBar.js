@@ -10,11 +10,13 @@ export default function NavBar({
   adminForm,
   submitFormLogin,
   language,
+  setLanguage,
 }) {
   const [renderFormLogin, setRenderFormLogin] = React.useState(false);
   const [renderAdminAccess, setRenderAdminAccess] = React.useState(false);
   const navigate = useNavigate();
   const copy = getAdminAccessCopy(language);
+  const languageOptions = ["en", "es"];
 
   const openAdminAccess = () => {
     setRenderAdminAccess(true);
@@ -49,6 +51,34 @@ export default function NavBar({
           <Link className="navLink linkSkills" to="/skills">
             Skills
           </Link>
+        </li>
+        <li>
+          <div className="languageSwitcher" aria-label="Portfolio language">
+            {languageOptions.map((option, index) => {
+              const isActive = language === option;
+
+              return (
+                <React.Fragment key={option}>
+                  <button
+                    type="button"
+                    className={`languageSwitcherButton ${
+                      isActive ? "isActive" : ""
+                    }`}
+                    onClick={() => setLanguage(option)}
+                    aria-pressed={isActive}
+                    aria-label={`Switch portfolio language to ${option.toUpperCase()}`}
+                  >
+                    {option.toUpperCase()}
+                  </button>
+                  {index === 0 && (
+                    <span className="languageSwitcherDivider" aria-hidden="true">
+                      |
+                    </span>
+                  )}
+                </React.Fragment>
+              );
+            })}
+          </div>
         </li>
         <li>
           {session === true ? (

@@ -56,7 +56,7 @@
     font-size: 1.05rem;
 
     @include mobileHorizontalAndTabletVertical {
-      gap: 1.25rem;
+      gap: 1rem;
       font-size: 1.9rem;
     }
 
@@ -69,6 +69,54 @@
       cursor: pointer;
       list-style: none;
     }
+  }
+
+  .languageSwitcher {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.35rem;
+    padding: 0rem 0.2rem;
+    border: 1px solid rgba(189, 242, 226, 0.14);
+    border-radius: 8px;
+    background: rgba(189, 242, 226, 0.03);
+  }
+
+  .languageSwitcherButton {
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    padding: 0rem 0.25rem;
+    border: 0;
+    background: transparent;
+    color: rgba(196, 210, 238, 0.72);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.74em;
+    font-weight: 600;
+    transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+
+    &:hover,
+    &:focus {
+      color: $fontColorPrimary;
+      transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $fontColorDetails;
+      outline-offset: 0.16rem;
+      border-radius: 6px;
+    }
+
+    &.isActive {
+      color: $fontColorDetails;
+      font-weight: 800;
+      text-shadow: 0rem 0rem 0.7rem rgba(0, 255, 255, 0.35);
+    }
+  }
+
+  .languageSwitcherDivider {
+    color: rgba(189, 242, 226, 0.28);
+    font-size: 0.72em;
+    line-height: 1;
   }
 
   .navLink {

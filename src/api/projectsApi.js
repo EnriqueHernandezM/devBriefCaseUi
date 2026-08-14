@@ -15,6 +15,21 @@ async function getAllProjectsToApi() {
   }
 }
 
+async function getProjectByIdToApi(idProject) {
+  try {
+    const projectData = await fetch(
+      `${API_BASE_URL}/v1/getAproject/${idProject}`
+    );
+    if (!projectData.ok) {
+      throw new Error("err in Api ");
+    }
+    const dataOk = await projectData.json();
+    return dataOk;
+  } catch (err) {
+    throw err;
+  }
+}
+
 async function postNewProjectToApi(body) {
   try {
     const postNewProject = await fetch(
@@ -68,6 +83,7 @@ async function deleteOnProjectFromApi(id) {
 
 export {
   getAllProjectsToApi,
+  getProjectByIdToApi,
   postNewProjectToApi,
   deleteOnProjectFromApi,
   updateAprojectFromApi,

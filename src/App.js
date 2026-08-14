@@ -7,9 +7,20 @@ import Footer from "./components/Footer";
 import { getLoginAdmin, loginAdmin } from "./api/adminApi";
 import SideBar from "./components/SideBar";
 import AdminPanel from "./components/AdminPanel";
+import ProjectCaseStudy from "./components/ProjectCaseStudy";
+
+const LANGUAGE_STORAGE_KEY = "portfolio-language";
+const supportedLanguages = ["en", "es"];
 
 function App() {
-  const [language, setLanguage] = React.useState("en");
+  const [language, setLanguage] = React.useState(() => {
+    try {
+      const savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+      return supportedLanguages.includes(savedLanguage) ? savedLanguage : "en";
+    } catch (error) {
+      return "en";
+    }
+  });
   const [adminForm, setAdminForm] = React.useState({
     name: "",
     password: "",
@@ -44,6 +55,14 @@ function App() {
       .catch((err) => err);
   }, []);
 
+  React.useEffect(() => {
+    try {
+      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+    } catch (error) {
+      // Keep the in-memory language if persistence is unavailable.
+    }
+  }, [language]);
+
   return (
     <Router>
       <div>
@@ -55,9 +74,13 @@ function App() {
           language={language}
           setLanguage={setLanguage}
         />
-        <SideBar />
+        <SideBar language={language} />
         <Routes>
           <Route path="/skills" element={<SkillsPage />} />
+          <Route
+            path="/projects/:id"
+            element={<ProjectCaseStudy language={language} />}
+          />
           <Route
             path="/admin_panel"
             element={
